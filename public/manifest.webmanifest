@@ -1,0 +1,13 @@
+{
+  "name": "Forecaxt — Forecast Exchange",
+  "short_name": "Forecaxt",
+  "description": "The forecast exchange for European, African and Caribbean markets.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080A0F",
+  "theme_color": "#080A0F",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
