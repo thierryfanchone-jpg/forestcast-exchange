@@ -1,68 +1,70 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { MobileNav } from "@/components/layout/MobileNav";
-import { ToastProvider } from "@/components/ui/Toast";
+import { CartProvider } from "@/lib/cart-store";
+import { Header } from "@/components/Header";
+import { Cart } from "@/components/Cart";
+import { SiteFooter } from "@/components/SiteFooter";
 
-const display = Space_Grotesk({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-playfair",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#080A0F",
+  themeColor: "#0a0a0a",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "Forecaxt — The Forecast Exchange",
-    template: "%s · Forecaxt",
+    default: "Les Ateliers de la Forme — Cuisine Saine, Gourmande & Premium",
+    template: "%s · Les Ateliers de la Forme",
   },
   description:
-    "Forecaxt is a regulated forecast exchange for European, African and Caribbean event contracts. Trade probability across politics, economy, crypto and more.",
+    "Cuisine premium, saine et gourmande, sans gluten et sans lactose. Des créations maison inspirées des saveurs caribéennes, pensées pour le plaisir et le bien-être. Fondé par Thierry Fanchone en 2017.",
   keywords: [
-    "forecast exchange",
-    "prediction market",
-    "event contracts",
-    "probability market",
-    "Forecaxt",
+    "cuisine saine",
+    "sans gluten",
+    "sans lactose",
+    "caribéen",
+    "traiteur antillais",
+    "épicerie fine",
+    "Thierry Fanchone",
+    "Les Ateliers de la Forme",
+    "bien-être",
+    "gâteau sans gluten",
   ],
-  manifest: "/manifest.webmanifest",
   openGraph: {
-    title: "Forecaxt — The Forecast Exchange",
+    title: "Les Ateliers de la Forme — Cuisine Caribéenne Premium",
     description:
-      "Trade event contracts across politics, economy, crypto, sports and more. Real probability, real liquidity.",
+      "Cuisine saine, gourmande et premium. Sans gluten, sans lactose. Des créations maison inspirées des Caraïbes.",
     type: "website",
   },
-  twitter: { card: "summary_large_image" },
-  icons: { icon: "/favicon.svg" },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${display.variable} ${mono.variable} dark`}>
-      <body className="min-h-screen bg-bg font-sans text-ink-primary antialiased">
-        <ToastProvider>
-          <div className="relative isolate">
-            <Navbar />
-            <main className="pb-24 pt-16 md:pb-0">{children}</main>
-            <Footer />
-            <MobileNav />
-          </div>
-        </ToastProvider>
-        <Analytics />
+    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-deep font-sans text-cream antialiased">
+        <CartProvider>
+          <Header />
+          <Cart />
+          <main>{children}</main>
+          <SiteFooter />
+        </CartProvider>
       </body>
     </html>
   );
