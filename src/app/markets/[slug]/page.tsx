@@ -125,7 +125,7 @@ export default async function MarketDetailPage({ params }: PageProps) {
             </div>
             Settles to <span className="font-mono text-ink-primary">$1</span> per YES share if the
             event resolves true, otherwise <span className="font-mono text-ink-primary">$0</span>.
-            Disputed resolutions are escalated to UMA's optimistic oracle within 48h.
+            Disputed resolutions are escalated to UMA&apos;s optimistic oracle within 48h.
           </div>
         </aside>
       </div>

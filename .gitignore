@@ -10,3 +10,5 @@ dist
 .idea
 prisma/dev.db*
 coverage
+tsconfig.tsbuildinfo
+next-env.d.ts

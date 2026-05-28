@@ -7,9 +7,6 @@ const nextConfig = {
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
   },
-  experimental: {
-    typedRoutes: true,
-  },
 };
 
 export default nextConfig;

@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-3xl px-6 py-16">
       <p className="font-mono text-xs uppercase tracking-widest text-accent-green">About</p>
       <h1 className="mt-1 font-display text-4xl font-bold tracking-tight md:text-5xl">
-        We're building the forecast exchange the world deserves.
+        We&apos;re building the forecast exchange the world deserves.
       </h1>
       <div className="prose prose-invert mt-8 max-w-none text-ink-secondary">
         <p>
@@ -25,7 +25,7 @@ export default function AboutPage() {
         </p>
         <p>
           Our infrastructure is non-custodial by default, settles on Polygon and Arbitrum, and is
-          governed by a transparent oracle stack including Chainlink price feeds and UMA's
+          governed by a transparent oracle stack including Chainlink price feeds and UMA&apos;s
           optimistic oracle.
         </p>
       </div>

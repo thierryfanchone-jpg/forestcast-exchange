@@ -12,8 +12,7 @@ import { useEffect, useState } from "react";
 export function useLivePrice(marketId: string, initial: number): number {
   const [p, setP] = useState(initial);
   useEffect(() => {
-    let raf: ReturnType<typeof setInterval>;
-    raf = setInterval(() => {
+    const raf: ReturnType<typeof setInterval> = setInterval(() => {
       setP((prev) => {
         const drift = (Math.random() - 0.5) * 0.012;
         const pull = (initial - prev) * 0.08;
