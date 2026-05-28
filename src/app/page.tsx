@@ -2,6 +2,8 @@ import { Hero } from "@/components/Hero";
 import { AnimatedBanner } from "@/components/AnimatedBanner";
 import { CategoryGrid } from "@/components/CategoryGrid";
 import { ProductGrid } from "@/components/ProductGrid";
+import { GallerySection } from "@/components/GallerySection";
+import { SignatureSection } from "@/components/SignatureSection";
 import { DifferenceSection } from "@/components/DifferenceSection";
 import { FounderSection } from "@/components/FounderSection";
 import { TraiteurSection } from "@/components/TraiteurSection";
@@ -22,6 +24,8 @@ export default function HomePage() {
         title="Nos produits phares"
         subtitle="Sélection Premium"
       />
+      <GallerySection />
+      <SignatureSection />
       <DifferenceSection />
       <FounderSection />
       <TraiteurSection />
