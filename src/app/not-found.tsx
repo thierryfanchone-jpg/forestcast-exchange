@@ -2,20 +2,23 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center px-6 text-center">
-      <span className="chip mb-6">404</span>
-      <h1 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-        That market doesn&apos;t exist (yet).
-      </h1>
-      <p className="mt-3 text-ink-secondary">
-        The contract you were looking for may have settled, been archived, or never existed.
+    <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+      <p className="mb-4 text-[11px] uppercase tracking-widest text-gold">
+        404
       </p>
-      <div className="mt-6 flex gap-2">
-        <Link href="/" className="btn-secondary">
-          Back home
+      <h1 className="mb-4 font-serif text-4xl text-cream md:text-5xl">
+        Page introuvable
+      </h1>
+      <div className="gold-line mx-auto mb-6 w-24" />
+      <p className="mb-8 max-w-sm text-sm leading-relaxed text-cream/50">
+        La page que vous recherchez n&apos;existe pas ou a été déplacée.
+      </p>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <Link href="/" className="btn-gold">
+          Retour à l&apos;accueil
         </Link>
-        <Link href="/markets" className="btn-primary">
-          Browse markets
+        <Link href="/commander" className="btn-outline">
+          Voir nos produits
         </Link>
       </div>
     </div>

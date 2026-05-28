@@ -1,155 +1,157 @@
-# Forecaxt — Forecast Exchange
+# Les Ateliers de la Forme
 
-A premium event-trading platform for European, African and Caribbean markets.
+Site e-commerce premium pour **Les Ateliers de la Forme** — cuisine saine, gourmande et caribéenne, sans gluten et sans lactose.
 
-> **Vocabulary** — we use **Event Trading**, **Forecast Exchange**, **Prediction
-> Exchange**, **Event Contracts** and **Probability Market** throughout the
-> product. We never refer to the platform as betting / gambling / casino /
-> bookmaker, in marketing copy, code or UI.
+Fondé par **Thierry Fanchone** en 2017.
 
-## Stack
+---
 
-| Layer        | Tech                                                                |
-| ------------ | ------------------------------------------------------------------- |
-| Frontend     | Next.js 15 (App Router) · React 19 · TypeScript · Tailwind · Framer Motion · Recharts |
-| Backend      | Next.js Route Handlers · Prisma ORM · PostgreSQL · Redis (rate limit) |
-| Realtime     | WebSocket gateway (`/ws/markets/:id`) — stubbed in `src/lib/websocket.ts` |
-| Blockchain   | Polygon / Arbitrum · Solidity mockups in `contracts/`               |
-| Auth         | NextAuth (Email + Google) · WalletConnect · TOTP 2FA · Sumsub KYC   |
-| Payments     | Stripe · USDC on-chain · card processing (mockup)                   |
-| AI           | Anthropic Claude (`claude-sonnet-4-20250514`) for briefings & assistant |
+## Stack technique
 
-## Getting started
+- **Next.js 15** (App Router)
+- **React 19**
+- **Tailwind CSS**
+- **Framer Motion** — animations fluides
+- **Lucide React** — icônes
+- **TypeScript** strict
+
+---
+
+## Installation
 
 ```bash
-# 1. Install
+git clone https://github.com/thierryfanchone-jpg/forestcast-exchange.git
+cd forestcast-exchange
 npm install
+```
 
-# 2. Provision env vars (see .env.example)
-cp .env.example .env
+---
 
-# 3. Database
-npm run db:push     # apply Prisma schema
-npm run db:seed     # populate 20+ realistic markets
+## Lancement local
 
-# 4. Dev server
+```bash
 npm run dev
 ```
 
-Open <http://localhost:3000>.
+Site disponible sur [http://localhost:3000](http://localhost:3000).
 
-## Pages
+---
 
-| Route             | Purpose                                                     |
-| ----------------- | ----------------------------------------------------------- |
-| `/`               | Landing — hero, live ticker, stats, trending markets, leaderboard preview |
-| `/markets`        | Markets explorer with category + search + sort filters      |
-| `/markets/[slug]` | Market detail: chart, order book, trading panel, AI brief   |
-| `/portfolio`      | Equity curve, positions, orders, watchlist, activity        |
-| `/leaderboard`    | Top forecasters, ROI / volume / accuracy filters            |
-| `/admin`          | Market creation, resolutions, moderation, analytics         |
-| `/login` `/register` | Auth with email, Google, WalletConnect                   |
-| `/learn` `/pricing` `/about` `/api-docs` `/settings` | Supporting pages         |
-
-## Project structure
+## Structure du projet
 
 ```
 src/
-  app/                Next.js App Router pages + API route handlers
-  components/
-    ui/               Button, Card, Toast, Skeleton, AnimatedNumber, Sparkline, ErrorBoundary
-    layout/           Navbar, MobileNav, Footer, Logo
-    markets/          MarketCard, PriceChart, OrderBook, TradingPanel, SentimentBar, RecentTrades, AISummary
-    portfolio/        PnLChart
-    auth/             AuthCard
-  lib/                utils, db (Prisma), websocket, oracle, ai, security, mock data
-  hooks/              useLivePrice (and room for more)
-  types/              Shared domain types
-prisma/               schema.prisma + seed.ts
-contracts/            MarketFactory.sol · EventContract.sol · OracleResolver.sol
-public/               manifest.webmanifest, favicon
+├── app/
+│   ├── layout.tsx              # Layout global (fonts, CartProvider)
+│   ├── page.tsx                # Page d'accueil
+│   ├── commander/page.tsx      # Catalogue filtrable par catégorie
+│   ├── menus/page.tsx
+│   ├── salades/page.tsx
+│   ├── biscuits/page.tsx
+│   ├── gateaux/page.tsx
+│   ├── specialites/page.tsx
+│   ├── boissons/page.tsx
+│   ├── condiments/page.tsx
+│   ├── epicerie/page.tsx
+│   ├── traiteur/page.tsx
+│   ├── notre-histoire/page.tsx
+│   └── contact/page.tsx
+│
+├── components/
+│   ├── Header.tsx              # Navigation fixe responsive
+│   ├── Hero.tsx                # Héro animé pleine page
+│   ├── AnimatedBanner.tsx      # Bandeau défilant en boucle
+│   ├── CategoryGrid.tsx        # Grille des 9 catégories
+│   ├── ProductCard.tsx         # Carte produit + panier
+│   ├── ProductGrid.tsx         # Grille de ProductCards
+│   ├── CategoryPageContent.tsx # Template pages catégorie
+│   ├── Cart.tsx                # Drawer panier latéral
+│   ├── CartItem.tsx            # Ligne article panier
+│   ├── WhatsAppOrder.tsx       # Formulaire + envoi WhatsApp
+│   ├── FounderSection.tsx      # Mot du fondateur
+│   ├── DifferenceSection.tsx   # Nos 4 piliers différenciants
+│   ├── TestimonialsSection.tsx # Avis clients
+│   ├── TraiteurSection.tsx     # Section traiteur & événements
+│   ├── ContactSection.tsx      # Coordonnées et contact
+│   └── SiteFooter.tsx          # Pied de page
+│
+└── lib/
+    ├── config.ts               # ⚙️  Numéro WhatsApp, email
+    ├── products.ts             # Catalogue (27 produits, 9 catégories)
+    ├── cart-store.tsx          # Context React + reducer panier
+    └── whatsapp.ts             # Génération message WhatsApp
 ```
 
-## Design system
+---
 
-| Token            | Value                                       |
-| ---------------- | ------------------------------------------- |
-| Background       | `#080A0F`                                   |
-| Surface 1 / 2    | `#0F1218` / `#161B24`                       |
-| Primary accent   | `#00D084` (financial green)                 |
-| Secondary accent | `#1E6FFF` (electric blue)                   |
-| Danger           | `#FF4560`                                   |
-| Text             | `#F0F2F5` / `#8A93A2`                       |
-| Display font     | Space Grotesk                               |
-| Mono font        | JetBrains Mono                              |
+## Modifier le numéro WhatsApp
 
-The Tailwind config wires these into utilities (`bg-bg`, `bg-surface-1`,
-`text-accent-green`, …) and exposes ambient effects: `bg-mesh-hero`,
-`bg-noise`, `shadow-glow`, and the `animate-ticker`, `animate-pulseDot`,
-`animate-shimmer` keyframes used across the UI.
+Ouvrez **`src/lib/config.ts`** :
 
-## Oracle architecture
+```typescript
+export const WHATSAPP_NUMBER = "+33600000000"; // ← votre numéro ici
+```
 
-Markets resolve through a hybrid stack documented in `src/lib/oracle.ts`
-and `contracts/OracleResolver.sol`:
+Format attendu : `+[code pays][numéro]`, ex. `+33612345678`.
 
-1. **Chainlink price feeds** — objective market data (BTC, ETH, FX, rates).
-2. **UMA optimistic oracle** — human-curated events with a 48h dispute window.
-3. **Press validators** — Reuters / AP query-hash binding.
-4. **Sport data feeds** — official scoreboards.
-5. **Manual admin override** — signed, audited, challengeable for 48h.
+---
 
-## Security
+## Modifier les produits
 
-* Edge middleware: IP-keyed token-bucket rate limiter + HTTP hardening headers (`src/middleware.ts`).
-* Anti-manipulation heuristics + fraud scoring (`src/lib/security.ts`).
-* Device-fingerprint + multi-account hooks (planned in `lib/security.ts`).
-* Two-factor authentication required for trading (TOTP, see `settings/page.tsx`).
+Ouvrez **`src/lib/products.ts`** et éditez le tableau `PRODUCTS` :
 
-## AI features
+```typescript
+{
+  id: "identifiant-unique",
+  name: "Nom du produit",
+  category: "salades",          // menus | salades | biscuits | gateaux |
+                                 // specialites | boissons | condiments |
+                                 // epicerie | traiteur
+  description: "Description courte.",
+  price: 9.50,                  // number | null  (null = "Sur devis")
+  image: "https://images.unsplash.com/photo-...",
+  glutenFree: true,
+  lactoseFree: true,
+  featured: true,               // optionnel — affiché en page d'accueil
+}
+```
 
-`src/lib/ai.ts` integrates the Anthropic API for:
+---
 
-* Auto-generated market briefings (per-market summary card)
-* Probability trend explanations
-* In-app trading assistant chat widget (UI plumbing to be wired)
-* Anomaly-detection alerts surfaced in `/admin`
+## Remplacer les images
 
-When `ANTHROPIC_API_KEY` is unset, the helper returns deterministic stub
-text so local development stays offline.
+Les images sont des URLs Unsplash en placeholder.
 
-## What's wired vs. stubbed in this drop
+Pour utiliser vos propres photos :
+1. Placez vos fichiers dans `public/images/`
+2. Remplacez les URLs dans `products.ts` : `/images/nom-fichier.jpg`
 
-| Area                                | Status                                                            |
-| ----------------------------------- | ------------------------------------------------------------------ |
-| Design system + glassmorphism + animation | Fully wired                                                  |
-| Landing, Markets list, Market detail, Portfolio, Leaderboard, Admin, Learn, Pricing, About, Settings, API docs, Login, Register, 404 | All built against mock data |
-| Prisma schema + seed (20+ markets)  | Real schema, seed reuses the same dataset the UI renders          |
-| REST API routes (markets, orders, portfolio, leaderboard, AI summary, auth/login) | Implemented against mocks, Zod-validated |
-| WebSocket gateway                   | Client shape + `useLivePrice` hook; server connect path is a stub |
-| Smart contracts (Solidity)          | Mockup contracts with full inline documentation                   |
-| Oracle stack                        | Strategy types + resolver stubs; live integrations to be filled in |
-| AI (Anthropic)                      | Helper module + API route; SDK call gated on env key              |
-| Auth / KYC / Payments / Wallet      | UI flows + stubs; provider integrations not yet wired             |
-| Light theme                         | Toggle wired; uses `.light` class on `<html>`                     |
-| PWA                                 | Manifest shipped (icons to be generated)                          |
-| Mobile experience                   | Bottom nav + responsive grid + touch-friendly trading panel       |
+---
 
-This codebase is structured so that each stubbed area can be filled in
-without touching the UI: swap the mock data adapters in `src/lib/mock/*`
-for real Prisma queries, point `useLivePrice` at the WebSocket gateway,
-and replace the AI stub in `src/lib/ai.ts` with an `@anthropic-ai/sdk` call.
+## Déploiement sur Vercel
 
-## Scripts
+**Via l'interface :**
+1. Importez ce dépôt sur [vercel.com](https://vercel.com)
+2. Framework preset : **Next.js** (auto-détecté)
+3. Cliquez **Deploy**
+
+**Via la CLI :**
+```bash
+npx vercel
+```
+
+---
+
+## Commandes utiles
 
 ```bash
-npm run dev          # Next.js dev server
-npm run build        # Production build
-npm run start        # Start built app
-npm run typecheck    # tsc --noEmit
+npm run dev          # Développement local
+npm run build        # Build production
+npm run typecheck    # Vérification TypeScript
 npm run lint         # ESLint
-npm run format       # Prettier write
-npm run db:push      # Apply Prisma schema to $DATABASE_URL
-npm run db:seed      # Seed 20+ markets + badges
-npm run db:studio    # Prisma Studio
+npm run format       # Prettier
 ```
+
+---
+
+*Les Ateliers de la Forme — Cuisine caribéenne premium, sans gluten et sans lactose. Fondé en 2017 par Thierry Fanchone.*
