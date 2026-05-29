@@ -1,58 +1,52 @@
 import type { Config } from "tailwindcss";
 
+/**
+ * Palette TrustLayer AI :
+ * - background clair, bleu foncé pour la marque,
+ * - vert "confiance", orange "risque", rouge "danger".
+ */
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
-        gold: {
-          light: "#e8c96a",
-          DEFAULT: "#c9a84c",
-          dark: "#9e7a2a",
+        brand: {
+          50: "#eef4ff",
+          100: "#dbe6fe",
+          500: "#2563eb",
+          600: "#1d4ed8",
+          700: "#1e3a8a",
+          900: "#0f1f4b",
         },
-        cream: "#f5f0e8",
-        forest: "#1a3a2a",
-        deep: "#0a0a0a",
-        surface: {
-          1: "#111111",
-          2: "#181818",
-          3: "#222222",
+        trust: {
+          DEFAULT: "#16a34a",
+          light: "#dcfce7",
         },
-        danger: "#FF4560",
+        warn: {
+          DEFAULT: "#ea580c",
+          light: "#ffedd5",
+        },
+        danger: {
+          DEFAULT: "#dc2626",
+          light: "#fee2e2",
+        },
+        ink: "#0f172a",
+        muted: "#64748b",
       },
       fontFamily: {
-        serif: ["var(--font-playfair)", "Georgia", "Cambria", "serif"],
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        mono: ["ui-monospace", "SFMono-Regular", "monospace"],
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         "fade-up": {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        shimmer: {
-          "100%": { transform: "translateX(100%)" },
-        },
-        "pulse-gold": {
-          "0%,100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
         },
       },
       animation: {
-        marquee: "marquee 35s linear infinite",
-        "fade-up": "fade-up 0.6s ease-out forwards",
-        shimmer: "shimmer 1.6s infinite",
-        "pulse-gold": "pulse-gold 2s ease-in-out infinite",
+        "fade-up": "fade-up 0.5s ease-out forwards",
       },
       boxShadow: {
-        "gold-glow": "0 0 40px -10px rgba(201, 168, 76, 0.5)",
-        "gold-sm": "0 0 20px -5px rgba(201, 168, 76, 0.25)",
-        card: "0 4px 32px rgba(0, 0, 0, 0.5)",
-        drawer: "-4px 0 40px rgba(0, 0, 0, 0.6)",
+        soft: "0 1px 3px rgba(15,23,42,0.08), 0 10px 30px -12px rgba(15,23,42,0.12)",
       },
     },
   },

@@ -1,70 +1,36 @@
-import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
-import { CartProvider } from "@/lib/cart-store";
+import { I18nProvider } from "@/components/I18nProvider";
 import { Header } from "@/components/Header";
-import { Cart } from "@/components/Cart";
-import { SiteFooter } from "@/components/SiteFooter";
+import { Footer } from "@/components/Footer";
+import { LOCALE_COOKIE, resolveLocale } from "@/lib/i18n";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
-  width: "device-width",
-  initialScale: 1,
-};
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Les Ateliers de la Forme — Cuisine Saine, Gourmande & Premium",
-    template: "%s · Les Ateliers de la Forme",
-  },
+  title: "TrustLayer AI — Vérifie la fiabilité des réponses IA",
   description:
-    "Cuisine premium, saine et gourmande, sans gluten et sans lactose. Des créations maison inspirées des saveurs caribéennes, pensées pour le plaisir et le bien-être. Fondé par Thierry Fanchone en 2017.",
-  keywords: [
-    "cuisine saine",
-    "sans gluten",
-    "sans lactose",
-    "caribéen",
-    "traiteur antillais",
-    "épicerie fine",
-    "Thierry Fanchone",
-    "Les Ateliers de la Forme",
-    "bien-être",
-    "gâteau sans gluten",
-  ],
-  openGraph: {
-    title: "Les Ateliers de la Forme — Cuisine Caribéenne Premium",
-    description:
-      "Cuisine saine, gourmande et premium. Sans gluten, sans lactose. Des créations maison inspirées des Caraïbes.",
-    type: "website",
-  },
+    "TrustLayer AI analyse les réponses générées par IA, détecte les risques, vérifie les sources et attribue un score de confiance.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const locale = resolveLocale(cookieStore.get(LOCALE_COOKIE)?.value);
+
   return (
-    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-deep font-sans text-cream antialiased">
-        <CartProvider>
+    <html lang={locale} className={inter.variable}>
+      <body className="flex min-h-screen flex-col font-sans">
+        <I18nProvider initialLocale={locale}>
           <Header />
-          <Cart />
-          <main>{children}</main>
-          <SiteFooter />
-        </CartProvider>
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </I18nProvider>
       </body>
     </html>
   );

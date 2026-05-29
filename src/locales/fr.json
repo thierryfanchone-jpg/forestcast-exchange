@@ -1,0 +1,140 @@
+{
+  "common": {
+    "appName": "TrustLayer AI",
+    "tagline": "Vérifie si une réponse IA est fiable avant de l'utiliser.",
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue.",
+    "retry": "Réessayer",
+    "back": "Retour",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "close": "Fermer"
+  },
+  "nav": {
+    "home": "Accueil",
+    "audit": "Vérifier",
+    "dashboard": "Tableau de bord",
+    "pricing": "Tarifs",
+    "account": "Mon compte",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "title": "Vérifie si une réponse IA est fiable avant de l'utiliser.",
+    "subtitle": "TrustLayer AI analyse les réponses générées par IA, détecte les risques, vérifie les sources et attribue un score de confiance.",
+    "ctaStart": "Commencer gratuitement",
+    "ctaPricing": "Voir les tarifs",
+    "feature1Title": "Score de confiance",
+    "feature1Desc": "Un score clair sur 100 pour chaque réponse analysée.",
+    "feature2Title": "Vérification des sources",
+    "feature2Desc": "Recherche web automatique et sources citées et cliquables.",
+    "feature3Title": "Réponse corrigée",
+    "feature3Desc": "Une version corrigée et fiable, prête à être utilisée.",
+    "howTitle": "Comment ça marche",
+    "step1": "Collez la question posée à l'IA.",
+    "step2": "Collez la réponse de l'IA à vérifier.",
+    "step3": "Recevez un rapport de fiabilité détaillé."
+  },
+  "audit": {
+    "title": "Vérifier une réponse IA",
+    "subtitle": "Collez la question et la réponse à analyser.",
+    "question": "Question originale",
+    "questionPlaceholder": "Quelle était la question posée à l'IA ?",
+    "answer": "Réponse IA à vérifier",
+    "answerPlaceholder": "Collez ici la réponse générée par l'IA…",
+    "language": "Langue du rapport",
+    "submit": "Vérifier maintenant",
+    "analyzing": "Analyse en cours…",
+    "creditsLeft": "Audits restants",
+    "unlimited": "Illimité",
+    "noCredits": "Vous n'avez plus d'audits. Achetez un pack pour continuer.",
+    "buyCredits": "Acheter des crédits",
+    "loginRequired": "Vous devez être connecté pour lancer un audit."
+  },
+  "result": {
+    "title": "Rapport de fiabilité",
+    "trustScore": "Score de confiance",
+    "riskLevel": "Niveau de risque",
+    "status": "Statut",
+    "mainClaims": "Affirmations principales",
+    "verifiedClaims": "Affirmations vérifiées",
+    "uncertainClaims": "Affirmations incertaines",
+    "riskyClaims": "Affirmations risquées",
+    "sources": "Sources",
+    "correctedAnswer": "Réponse corrigée",
+    "recommendation": "Recommandation finale",
+    "noSources": "Aucune source trouvée.",
+    "relevance": "Pertinence",
+    "newAudit": "Nouvel audit"
+  },
+  "risk": {
+    "low": "faible",
+    "medium": "moyen",
+    "high": "élevé"
+  },
+  "statusValue": {
+    "usable": "utilisable",
+    "verify": "à vérifier",
+    "doNotUse": "à ne pas utiliser"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "creditsLeft": "Crédits restants",
+    "currentPlan": "Plan actuel",
+    "history": "Historique des audits",
+    "noHistory": "Aucun audit pour le moment.",
+    "newAudit": "Lancer un audit",
+    "buyCredits": "Acheter des crédits",
+    "viewReport": "Voir le rapport"
+  },
+  "pricing": {
+    "title": "Tarifs",
+    "subtitle": "Choisissez le pack adapté à vos besoins.",
+    "audits": "audits",
+    "unlimitedAudits": "Audits illimités",
+    "oneTime": "Paiement unique",
+    "perMonth": "/ mois",
+    "starter": "Starter",
+    "pro": "Pro",
+    "unlimited": "Unlimited",
+    "choose": "Choisir",
+    "popular": "Populaire"
+  },
+  "payment": {
+    "card": "Carte bancaire",
+    "paypal": "PayPal",
+    "crypto": "Crypto",
+    "processing": "Redirection…",
+    "unavailable": "Ce moyen de paiement n'est pas configuré.",
+    "title": "Moyen de paiement"
+  },
+  "auth": {
+    "loginTitle": "Connexion à TrustLayer AI",
+    "loginSubtitle": "Connectez-vous pour lancer vos audits.",
+    "google": "Continuer avec Google",
+    "apple": "Continuer avec Apple",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "vous@exemple.com",
+    "magicLink": "Recevoir un lien de connexion",
+    "magicLinkSent": "Lien envoyé ! Vérifiez votre boîte mail.",
+    "or": "ou"
+  },
+  "account": {
+    "title": "Mon compte",
+    "email": "Adresse e-mail",
+    "plan": "Plan",
+    "credits": "Crédits",
+    "memberSince": "Membre depuis",
+    "logout": "Se déconnecter"
+  },
+  "success": {
+    "title": "Paiement réussi",
+    "message": "Vos crédits ont été ajoutés à votre compte.",
+    "cta": "Aller au tableau de bord"
+  },
+  "cancel": {
+    "title": "Paiement annulé",
+    "message": "Aucun montant n'a été débité.",
+    "cta": "Retour aux tarifs"
+  }
+}
