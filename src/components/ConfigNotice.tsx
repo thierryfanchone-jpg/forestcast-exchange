@@ -1,41 +1,77 @@
 import Link from "next/link";
-import { Settings2 } from "lucide-react";
-import { isProd } from "@/lib/env";
+import { AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
+import { env, isProd } from "@/lib/env";
 
 /**
- * Message affiché lorsqu'un service requis n'est pas encore configuré.
- * - En développement : on détaille les variables à renseigner.
- * - En production : message sobre + retour à l'accueil, pour ne jamais
- *   donner l'impression que tout le site est cassé.
- * Le Header / Footer restent affichés (rendu dans le layout).
+ * Diagnostic technique affiché quand Supabase n'est pas détecté.
+ *
+ * Ce n'est PAS un écran de masquage : il indique précisément quelle
+ * variable manque (sans jamais afficher de valeur) et comment corriger.
+ * On ne contrôle ici que les variables PUBLIQUES (URL + anon key), qui
+ * sont identiques côté client et serveur (inlinées au build).
  */
-export function ConfigNotice({ service }: { service: string }) {
+export function ConfigNotice({ service = "Supabase" }: { service?: string }) {
+  const checks = [
+    { name: "NEXT_PUBLIC_SUPABASE_URL", set: Boolean(env.supabaseUrl) },
+    { name: "NEXT_PUBLIC_SUPABASE_ANON_KEY", set: Boolean(env.supabaseAnonKey) },
+  ];
+
   return (
-    <div className="mx-auto flex max-w-xl flex-col items-center gap-4 rounded-xl border border-slate-200 bg-white p-8 text-center shadow-soft">
-      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-50 text-brand-600">
-        <Settings2 className="h-6 w-6" />
-      </span>
-      <h2 className="text-lg font-semibold text-ink">
-        Service bientôt disponible
-      </h2>
-      <p className="text-sm text-muted">
-        {service} n&apos;est pas encore configuré pour cette instance.
-        {isProd
-          ? " Revenez bientôt — la configuration est en cours de finalisation."
-          : ""}
-      </p>
+    <div className="mx-auto max-w-xl rounded-xl border border-warn/30 bg-white p-6 shadow-soft">
+      <div className="flex items-center gap-3">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-warn-light text-warn">
+          <AlertTriangle className="h-5 w-5" />
+        </span>
+        <div>
+          <h2 className="font-semibold text-ink">
+            Configuration {service} incomplète
+          </h2>
+          <p className="text-sm text-muted">
+            Variables d&apos;environnement manquantes pour cette instance.
+          </p>
+        </div>
+      </div>
 
-      {!isProd && (
-        <p className="text-sm text-muted">
-          Renseignez les variables correspondantes dans{" "}
-          <code className="rounded bg-slate-100 px-1">.env.local</code>{" "}
-          (voir <code className="rounded bg-slate-100 px-1">.env.example</code>).
-        </p>
-      )}
+      <ul className="mt-4 space-y-2 rounded-lg bg-slate-50 p-3">
+        {checks.map((c) => (
+          <li key={c.name} className="flex items-center justify-between text-sm">
+            <span className="font-mono text-ink">{c.name}</span>
+            {c.set ? (
+              <CheckCircle2 className="h-4 w-4 text-trust" />
+            ) : (
+              <XCircle className="h-4 w-4 text-danger" />
+            )}
+          </li>
+        ))}
+      </ul>
 
-      <Link href="/" className="btn-primary">
-        Retour à l&apos;accueil
-      </Link>
+      <div className="mt-4 space-y-2 text-sm text-muted">
+        {isProd ? (
+          <p>
+            Ajoutez ces variables dans <strong>Vercel → Settings →
+            Environment Variables</strong>, puis lancez un{" "}
+            <strong>Redeploy</strong> (les variables{" "}
+            <code className="rounded bg-slate-100 px-1">NEXT_PUBLIC_*</code> sont
+            figées au build).
+          </p>
+        ) : (
+          <p>
+            Renseignez-les dans{" "}
+            <code className="rounded bg-slate-100 px-1">.env.local</code> (voir{" "}
+            <code className="rounded bg-slate-100 px-1">.env.example</code>),
+            puis relancez <code className="rounded bg-slate-100 px-1">npm run dev</code>.
+          </p>
+        )}
+      </div>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Link href="/" className="btn-secondary">
+          Accueil
+        </Link>
+        <a href="/api/health" className="btn-secondary" target="_blank" rel="noopener noreferrer">
+          Voir /api/health
+        </a>
+      </div>
     </div>
   );
 }

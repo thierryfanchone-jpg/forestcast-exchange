@@ -60,3 +60,16 @@ export interface Audit {
 
 export type ProductType = "starter" | "pro" | "unlimited";
 export type PaymentProvider = "stripe" | "paypal" | "crypto";
+
+export interface Payment {
+  id: string;
+  user_id: string;
+  provider: string | null;
+  provider_payment_id: string | null;
+  amount: number | null;
+  currency: string;
+  product_type: string | null;
+  credits_added: number | null;
+  status: string | null;
+  created_at: string;
+}

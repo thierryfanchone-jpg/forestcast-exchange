@@ -1,4 +1,4 @@
-import { createAdminClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { getPlan } from "@/lib/pricing";
 import type { PaymentProvider, ProductType } from "@/types";
 

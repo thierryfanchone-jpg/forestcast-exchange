@@ -79,10 +79,16 @@
   },
   "dashboard": {
     "title": "Panel",
+    "email": "Correo electrónico",
     "creditsLeft": "Créditos restantes",
     "currentPlan": "Plan actual",
-    "history": "Historial de auditorías",
+    "stats": "Estadísticas",
+    "totalAudits": "Auditorías realizadas",
+    "avgScore": "Puntuación media",
+    "history": "Últimas auditorías",
     "noHistory": "Aún no hay auditorías.",
+    "payments": "Pagos",
+    "noPayments": "Aún no hay pagos.",
     "newAudit": "Lanzar una auditoría",
     "buyCredits": "Comprar créditos",
     "viewReport": "Ver informe"

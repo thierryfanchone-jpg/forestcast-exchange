@@ -4,7 +4,7 @@ import { isSupabaseConfigured, logEnvStatus } from "@/lib/env";
 import { DashboardView } from "@/components/DashboardView";
 import { ConfigNotice } from "@/components/ConfigNotice";
 import { LoginPrompt } from "@/components/LoginPrompt";
-import type { Audit } from "@/types";
+import type { Audit, Payment } from "@/types";
 
 export const dynamic = "force-dynamic";
 
@@ -28,15 +28,42 @@ export default async function DashboardPage() {
   }
 
   const supabase = await createClient();
-  const { data: audits } = await supabase!
-    .from("audits")
-    .select("id, original_question, trust_score, risk_level, status, created_at")
-    .order("created_at", { ascending: false })
-    .limit(50);
+
+  // Audits récents + total + paiements (RLS limite à l'utilisateur courant).
+  const [{ data: audits }, { count }, { data: payments }] = await Promise.all([
+    supabase!
+      .from("audits")
+      .select("id, original_question, trust_score, risk_level, status, created_at")
+      .order("created_at", { ascending: false })
+      .limit(50),
+    supabase!
+      .from("audits")
+      .select("id", { count: "exact", head: true }),
+    supabase!
+      .from("payments")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(20),
+  ]);
+
+  const auditList = (audits as Audit[]) ?? [];
+  const scored = auditList.filter((a) => typeof a.trust_score === "number");
+  const avgScore =
+    scored.length > 0
+      ? Math.round(
+          scored.reduce((sum, a) => sum + (a.trust_score ?? 0), 0) / scored.length
+        )
+      : null;
 
   return (
     <div className="container-app max-w-4xl py-12">
-      <DashboardView profile={profile} audits={(audits as Audit[]) ?? []} />
+      <DashboardView
+        profile={profile}
+        audits={auditList}
+        payments={(payments as Payment[]) ?? []}
+        totalAudits={count ?? auditList.length}
+        avgScore={avgScore}
+      />
     </div>
   );
 }

@@ -79,10 +79,16 @@
   },
   "dashboard": {
     "title": "Dashboard",
+    "email": "Email address",
     "creditsLeft": "Credits left",
     "currentPlan": "Current plan",
-    "history": "Audit history",
+    "stats": "Statistics",
+    "totalAudits": "Audits run",
+    "avgScore": "Average score",
+    "history": "Latest audits",
     "noHistory": "No audit yet.",
+    "payments": "Payments",
+    "noPayments": "No payment yet.",
     "newAudit": "Run an audit",
     "buyCredits": "Buy credits",
     "viewReport": "View report"

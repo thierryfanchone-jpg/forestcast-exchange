@@ -79,10 +79,16 @@
   },
   "dashboard": {
     "title": "Tableau de bord",
+    "email": "Adresse e-mail",
     "creditsLeft": "Crédits restants",
     "currentPlan": "Plan actuel",
-    "history": "Historique des audits",
+    "stats": "Statistiques",
+    "totalAudits": "Audits réalisés",
+    "avgScore": "Score moyen",
+    "history": "Derniers audits",
     "noHistory": "Aucun audit pour le moment.",
+    "payments": "Paiements",
+    "noPayments": "Aucun paiement.",
     "newAudit": "Lancer un audit",
     "buyCredits": "Acheter des crédits",
     "viewReport": "Voir le rapport"
