@@ -1,0 +1,147 @@
+{
+  "common": {
+    "appName": "TrustLayer AI",
+    "tagline": "Check whether an AI answer is reliable before using it.",
+    "loading": "Loading…",
+    "error": "Something went wrong.",
+    "retry": "Try again",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close"
+  },
+  "nav": {
+    "home": "Home",
+    "audit": "Verify",
+    "dashboard": "Dashboard",
+    "pricing": "Pricing",
+    "account": "My account",
+    "login": "Sign in",
+    "logout": "Sign out"
+  },
+  "home": {
+    "title": "Check whether an AI answer is reliable before using it.",
+    "subtitle": "TrustLayer AI analyzes AI-generated answers, detects risks, verifies sources and assigns a trust score.",
+    "ctaStart": "Start for free",
+    "ctaPricing": "View pricing",
+    "feature1Title": "Trust score",
+    "feature1Desc": "A clear score out of 100 for every analyzed answer.",
+    "feature2Title": "Source verification",
+    "feature2Desc": "Automatic web search with cited, clickable sources.",
+    "feature3Title": "Corrected answer",
+    "feature3Desc": "A corrected, reliable version ready to use.",
+    "howTitle": "How it works",
+    "step1": "Paste the question asked to the AI.",
+    "step2": "Paste the AI answer to verify.",
+    "step3": "Get a detailed reliability report."
+  },
+  "audit": {
+    "title": "Verify an AI answer",
+    "subtitle": "Paste the question and the answer to analyze.",
+    "question": "Original question",
+    "questionPlaceholder": "What question was asked to the AI?",
+    "answer": "AI answer to verify",
+    "answerPlaceholder": "Paste the AI-generated answer here…",
+    "language": "Report language",
+    "submit": "Verify now",
+    "analyzing": "Analyzing…",
+    "creditsLeft": "Audits left",
+    "unlimited": "Unlimited",
+    "noCredits": "You have no audits left. Buy a pack to continue.",
+    "buyCredits": "Buy credits",
+    "loginRequired": "You must be signed in to run an audit."
+  },
+  "result": {
+    "title": "Reliability report",
+    "trustScore": "Trust score",
+    "riskLevel": "Risk level",
+    "status": "Status",
+    "mainClaims": "Main claims",
+    "verifiedClaims": "Verified claims",
+    "uncertainClaims": "Uncertain claims",
+    "riskyClaims": "Risky claims",
+    "sources": "Sources",
+    "correctedAnswer": "Corrected answer",
+    "recommendation": "Final recommendation",
+    "noSources": "No source found.",
+    "relevance": "Relevance",
+    "newAudit": "New audit"
+  },
+  "risk": {
+    "low": "low",
+    "medium": "medium",
+    "high": "high"
+  },
+  "statusValue": {
+    "usable": "usable",
+    "verify": "needs review",
+    "doNotUse": "do not use"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "email": "Email address",
+    "creditsLeft": "Credits left",
+    "currentPlan": "Current plan",
+    "stats": "Statistics",
+    "totalAudits": "Audits run",
+    "avgScore": "Average score",
+    "history": "Latest audits",
+    "noHistory": "No audit yet.",
+    "payments": "Payments",
+    "noPayments": "No payment yet.",
+    "newAudit": "Run an audit",
+    "buyCredits": "Buy credits",
+    "viewReport": "View report"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "subtitle": "Choose the pack that fits your needs.",
+    "audits": "audits",
+    "unlimitedAudits": "Unlimited audits",
+    "oneTime": "One-time payment",
+    "perMonth": "/ month",
+    "starter": "Starter",
+    "pro": "Pro",
+    "unlimited": "Unlimited",
+    "choose": "Choose",
+    "popular": "Popular"
+  },
+  "payment": {
+    "card": "Credit card",
+    "paypal": "PayPal",
+    "crypto": "Crypto",
+    "processing": "Redirecting…",
+    "notConfigured": "Payment not configured",
+    "unavailable": "This payment method is not configured.",
+    "title": "Payment method"
+  },
+  "auth": {
+    "loginTitle": "Sign in to TrustLayer AI",
+    "loginSubtitle": "Sign in to run your audits.",
+    "google": "Continue with Google",
+    "apple": "Continue with Apple",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "magicLink": "Send me a login link",
+    "magicLinkSent": "Link sent! Check your inbox.",
+    "or": "or"
+  },
+  "account": {
+    "title": "My account",
+    "email": "Email address",
+    "plan": "Plan",
+    "credits": "Credits",
+    "memberSince": "Member since",
+    "logout": "Sign out"
+  },
+  "success": {
+    "title": "Payment successful",
+    "message": "Your credits have been added to your account.",
+    "cta": "Go to dashboard"
+  },
+  "cancel": {
+    "title": "Payment cancelled",
+    "message": "No amount was charged.",
+    "cta": "Back to pricing"
+  }
+}

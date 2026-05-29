@@ -1,112 +1,75 @@
-/**
- * Domain types for the Forecaxt forecast exchange.
- * These shapes mirror the Prisma schema so the UI can be developed
- * against typed mock data before the database is available.
- */
+// Types partagés de l'application TrustLayer AI
 
-export type MarketCategory =
-  | "Politics"
-  | "Economy"
-  | "Crypto"
-  | "Sports"
-  | "Caribbean"
-  | "Africa"
-  | "Technology"
-  | "Energy";
+export type Locale = "fr" | "en" | "es";
 
-export type MarketStatus = "open" | "closing-soon" | "resolved" | "disputed";
+export type RiskLevel = "faible" | "moyen" | "élevé";
+export type AuditStatus = "utilisable" | "à vérifier" | "à ne pas utiliser";
 
-export type OracleSource = "chainlink" | "uma" | "reuters" | "ap" | "sport-api" | "manual";
-
-export interface PricePoint {
-  t: number; // unix ms
-  p: number; // probability 0..1
-  v?: number; // volume bucket
-}
-
-export interface OrderBookLevel {
-  price: number; // cents 0..100
-  size: number; // shares
-  side: "yes" | "no";
-}
-
-export interface Market {
-  id: string;
-  slug: string;
+export interface AuditSource {
   title: string;
-  description: string;
-  category: MarketCategory;
-  region?: "EU" | "AF" | "CB" | "GLOBAL";
-  probability: number; // 0..1 last
-  volume: number; // USD lifetime
-  liquidity: number; // USD live
-  openInterest: number;
-  status: MarketStatus;
-  closesAt: string; // ISO
-  createdAt: string;
-  series: PricePoint[];
-  oracle: OracleSource;
-  tags: string[];
-  imageHint?: string;
+  url: string;
+  relevance: string;
+  supports_claims: string[];
 }
 
-export interface Position {
+/** Format JSON strict renvoyé par le modèle OpenAI. */
+export interface AuditReport {
+  trust_score: number;
+  risk_level: RiskLevel;
+  status: AuditStatus;
+  main_claims: string[];
+  verified_claims: string[];
+  uncertain_claims: string[];
+  risky_claims: string[];
+  sources: AuditSource[];
+  corrected_answer: string;
+  final_recommendation: string;
+}
+
+export interface Profile {
   id: string;
-  marketId: string;
-  marketTitle: string;
-  side: "yes" | "no";
-  shares: number;
-  avgPrice: number; // 0..1
-  markPrice: number; // 0..1
-  pnl: number;
-  openedAt: string;
+  email: string | null;
+  full_name: string | null;
+  avatar_url: string | null;
+  free_audits_used: number;
+  plan: string;
+  audit_credits: number;
+  is_unlimited: boolean;
+  created_at: string;
 }
 
-export interface OrderRow {
+export interface Audit {
   id: string;
-  marketId: string;
-  side: "yes" | "no";
-  type: "limit" | "market";
-  price: number;
-  size: number;
-  filled: number;
-  status: "open" | "filled" | "cancelled";
-  createdAt: string;
+  user_id: string;
+  original_question: string;
+  ai_answer: string;
+  report_language: Locale;
+  trust_score: number | null;
+  risk_level: string | null;
+  status: string | null;
+  main_claims: string[] | null;
+  verified_claims: string[] | null;
+  uncertain_claims: string[] | null;
+  risky_claims: string[] | null;
+  sources: AuditSource[] | null;
+  corrected_answer: string | null;
+  final_recommendation: string | null;
+  raw_report: AuditReport | null;
+  created_at: string;
 }
 
-export interface LeaderboardEntry {
-  rank: number;
-  handle: string;
-  avatar: string;
-  roi: number; // %
-  volume: number;
-  accuracy: number; // 0..1
-  level: UserLevel;
-  badges: string[];
-}
+export type ProductType = "starter" | "pro" | "unlimited";
+export type PaymentProvider = "stripe" | "paypal" | "crypto";
 
-export type UserLevel = "Rookie" | "Analyst" | "Strategist" | "Forecaster" | "Oracle";
-
-export interface User {
+export interface Payment {
   id: string;
-  email: string;
-  handle: string;
-  level: UserLevel;
-  xp: number;
-  accuracy: number;
-  streak: number;
-  badges: string[];
-  walletAddress?: string;
-  balance: { usd: number; usdc: number };
-  kycStatus: "none" | "pending" | "verified" | "rejected";
-  createdAt: string;
-}
-
-export interface Notification {
-  id: string;
-  type: "resolution" | "price-alert" | "closing-soon" | "order-filled" | "system";
-  title: string;
-  body: string;
-  createdAt: string;
-  read: boolean;
+  user_id: string;
+  provider: string | null;
+  provider_payment_id: string | null;
+  amount: number | null;
+  currency: string;
+  product_type: string | null;
+  credits_added: number | null;
+  status: string | null;
+  created_at: string;
 }

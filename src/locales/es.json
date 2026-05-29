@@ -1,0 +1,147 @@
+{
+  "common": {
+    "appName": "TrustLayer AI",
+    "tagline": "Comprueba si una respuesta de IA es fiable antes de usarla.",
+    "loading": "Cargando…",
+    "error": "Se produjo un error.",
+    "retry": "Reintentar",
+    "back": "Volver",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar"
+  },
+  "nav": {
+    "home": "Inicio",
+    "audit": "Verificar",
+    "dashboard": "Panel",
+    "pricing": "Precios",
+    "account": "Mi cuenta",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión"
+  },
+  "home": {
+    "title": "Comprueba si una respuesta de IA es fiable antes de usarla.",
+    "subtitle": "TrustLayer AI analiza las respuestas generadas por IA, detecta riesgos, verifica las fuentes y asigna una puntuación de confianza.",
+    "ctaStart": "Empezar gratis",
+    "ctaPricing": "Ver precios",
+    "feature1Title": "Puntuación de confianza",
+    "feature1Desc": "Una puntuación clara sobre 100 para cada respuesta analizada.",
+    "feature2Title": "Verificación de fuentes",
+    "feature2Desc": "Búsqueda web automática con fuentes citadas y clicables.",
+    "feature3Title": "Respuesta corregida",
+    "feature3Desc": "Una versión corregida y fiable, lista para usar.",
+    "howTitle": "Cómo funciona",
+    "step1": "Pega la pregunta hecha a la IA.",
+    "step2": "Pega la respuesta de la IA a verificar.",
+    "step3": "Recibe un informe de fiabilidad detallado."
+  },
+  "audit": {
+    "title": "Verificar una respuesta de IA",
+    "subtitle": "Pega la pregunta y la respuesta a analizar.",
+    "question": "Pregunta original",
+    "questionPlaceholder": "¿Qué pregunta se le hizo a la IA?",
+    "answer": "Respuesta de IA a verificar",
+    "answerPlaceholder": "Pega aquí la respuesta generada por la IA…",
+    "language": "Idioma del informe",
+    "submit": "Verificar ahora",
+    "analyzing": "Analizando…",
+    "creditsLeft": "Auditorías restantes",
+    "unlimited": "Ilimitado",
+    "noCredits": "No te quedan auditorías. Compra un paquete para continuar.",
+    "buyCredits": "Comprar créditos",
+    "loginRequired": "Debes iniciar sesión para lanzar una auditoría."
+  },
+  "result": {
+    "title": "Informe de fiabilidad",
+    "trustScore": "Puntuación de confianza",
+    "riskLevel": "Nivel de riesgo",
+    "status": "Estado",
+    "mainClaims": "Afirmaciones principales",
+    "verifiedClaims": "Afirmaciones verificadas",
+    "uncertainClaims": "Afirmaciones inciertas",
+    "riskyClaims": "Afirmaciones arriesgadas",
+    "sources": "Fuentes",
+    "correctedAnswer": "Respuesta corregida",
+    "recommendation": "Recomendación final",
+    "noSources": "No se encontró ninguna fuente.",
+    "relevance": "Relevancia",
+    "newAudit": "Nueva auditoría"
+  },
+  "risk": {
+    "low": "bajo",
+    "medium": "medio",
+    "high": "alto"
+  },
+  "statusValue": {
+    "usable": "utilizable",
+    "verify": "a verificar",
+    "doNotUse": "no usar"
+  },
+  "dashboard": {
+    "title": "Panel",
+    "email": "Correo electrónico",
+    "creditsLeft": "Créditos restantes",
+    "currentPlan": "Plan actual",
+    "stats": "Estadísticas",
+    "totalAudits": "Auditorías realizadas",
+    "avgScore": "Puntuación media",
+    "history": "Últimas auditorías",
+    "noHistory": "Aún no hay auditorías.",
+    "payments": "Pagos",
+    "noPayments": "Aún no hay pagos.",
+    "newAudit": "Lanzar una auditoría",
+    "buyCredits": "Comprar créditos",
+    "viewReport": "Ver informe"
+  },
+  "pricing": {
+    "title": "Precios",
+    "subtitle": "Elige el paquete adecuado para ti.",
+    "audits": "auditorías",
+    "unlimitedAudits": "Auditorías ilimitadas",
+    "oneTime": "Pago único",
+    "perMonth": "/ mes",
+    "starter": "Starter",
+    "pro": "Pro",
+    "unlimited": "Unlimited",
+    "choose": "Elegir",
+    "popular": "Popular"
+  },
+  "payment": {
+    "card": "Tarjeta bancaria",
+    "paypal": "PayPal",
+    "crypto": "Cripto",
+    "processing": "Redirigiendo…",
+    "notConfigured": "Pago no configurado",
+    "unavailable": "Este método de pago no está configurado.",
+    "title": "Método de pago"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesión en TrustLayer AI",
+    "loginSubtitle": "Inicia sesión para lanzar tus auditorías.",
+    "google": "Continuar con Google",
+    "apple": "Continuar con Apple",
+    "emailLabel": "Correo electrónico",
+    "emailPlaceholder": "tu@ejemplo.com",
+    "magicLink": "Enviarme un enlace de acceso",
+    "magicLinkSent": "¡Enlace enviado! Revisa tu correo.",
+    "or": "o"
+  },
+  "account": {
+    "title": "Mi cuenta",
+    "email": "Correo electrónico",
+    "plan": "Plan",
+    "credits": "Créditos",
+    "memberSince": "Miembro desde",
+    "logout": "Cerrar sesión"
+  },
+  "success": {
+    "title": "Pago realizado",
+    "message": "Tus créditos se han añadido a tu cuenta.",
+    "cta": "Ir al panel"
+  },
+  "cancel": {
+    "title": "Pago cancelado",
+    "message": "No se ha cobrado ningún importe.",
+    "cta": "Volver a precios"
+  }
+}
