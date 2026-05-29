@@ -105,6 +105,7 @@
     "paypal": "PayPal",
     "crypto": "Crypto",
     "processing": "Redirection…",
+    "notConfigured": "Paiement non configuré",
     "unavailable": "Ce moyen de paiement n'est pas configuré.",
     "title": "Moyen de paiement"
   },

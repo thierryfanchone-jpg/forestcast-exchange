@@ -1,17 +1,18 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getCurrentProfile } from "@/lib/auth";
-import { isSupabaseConfigured } from "@/lib/env";
+import { isSupabaseConfigured, logEnvStatus } from "@/lib/env";
 import { DashboardView } from "@/components/DashboardView";
 import { ConfigNotice } from "@/components/ConfigNotice";
+import { LoginPrompt } from "@/components/LoginPrompt";
 import type { Audit } from "@/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   if (!isSupabaseConfigured()) {
+    logEnvStatus("dashboard");
     return (
-      <div className="container-app py-12">
+      <div className="container-app py-16">
         <ConfigNotice service="Supabase" />
       </div>
     );
@@ -19,7 +20,11 @@ export default async function DashboardPage() {
 
   const profile = await getCurrentProfile();
   if (!profile) {
-    redirect("/login?next=/dashboard");
+    return (
+      <div className="container-app py-16">
+        <LoginPrompt next="/dashboard" />
+      </div>
+    );
   }
 
   const supabase = await createClient();
@@ -31,10 +36,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="container-app max-w-4xl py-12">
-      <DashboardView
-        profile={profile}
-        audits={(audits as Audit[]) ?? []}
-      />
+      <DashboardView profile={profile} audits={(audits as Audit[]) ?? []} />
     </div>
   );
 }

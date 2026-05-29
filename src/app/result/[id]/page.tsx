@@ -1,8 +1,9 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/env";
 import { ReportView } from "@/components/ReportView";
 import { ConfigNotice } from "@/components/ConfigNotice";
+import { LoginPrompt } from "@/components/LoginPrompt";
 import type { Audit } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +17,7 @@ export default async function ResultPage({
 
   if (!isSupabaseConfigured()) {
     return (
-      <div className="container-app py-12">
+      <div className="container-app py-16">
         <ConfigNotice service="Supabase" />
       </div>
     );
@@ -29,7 +30,11 @@ export default async function ResultPage({
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) {
-    redirect(`/login?next=/result/${id}`);
+    return (
+      <div className="container-app py-16">
+        <LoginPrompt next={`/result/${id}`} />
+      </div>
+    );
   }
 
   // RLS garantit que l'utilisateur ne lit que ses propres audits.

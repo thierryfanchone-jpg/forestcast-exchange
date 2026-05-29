@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { auditInputSchema } from "@/lib/validation";
 import { searchWeb } from "@/lib/tavily";
 import { analyzeAnswer } from "@/lib/openai";
-import { isOpenAIConfigured } from "@/lib/env";
+import { isOpenAIConfigured, isTavilyConfigured } from "@/lib/env";
 import type { Profile } from "@/types";
 
 export const runtime = "nodejs";
@@ -67,6 +67,11 @@ export async function POST(request: Request) {
 
   try {
     // 4. Recherche de sources via Tavily (tolérant aux erreurs).
+    if (!isTavilyConfigured()) {
+      console.warn(
+        "[audit] TAVILY_API_KEY absente : analyse sans sources web externes."
+      );
+    }
     const query = `${input.original_question}\n${input.ai_answer}`.slice(0, 400);
     const sources = await searchWeb(query);
 

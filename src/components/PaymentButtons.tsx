@@ -71,7 +71,9 @@ export function PaymentButtons({ productType, available }: Props) {
           {m.icon}
           {pending === m.provider ? t("payment.processing") : m.label}
           {!available[m.provider] && (
-            <span className="ml-auto text-xs text-muted">×</span>
+            <span className="ml-auto text-xs text-muted">
+              {t("payment.notConfigured")}
+            </span>
           )}
         </button>
       ))}
