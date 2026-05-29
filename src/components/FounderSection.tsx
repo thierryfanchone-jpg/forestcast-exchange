@@ -32,7 +32,7 @@ export function FounderSection() {
           >
             <div className="relative h-[480px] overflow-hidden md:h-[580px]">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop"
+                src="/images/founder.jpg"
                 alt="Thierry Fanchone — Fondateur des Ateliers de la Forme"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

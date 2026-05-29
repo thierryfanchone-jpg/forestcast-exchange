@@ -39,6 +39,7 @@ export function ProductCard({ product }: Props) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/20" />
         <div className="absolute inset-0 bg-gradient-to-t from-surface-1 via-transparent to-transparent" />
 
         {/* Badges */}

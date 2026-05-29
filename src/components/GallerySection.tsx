@@ -6,20 +6,20 @@ import { motion, useInView } from "framer-motion";
 
 const SALADES = [
   {
-    src: "/images/salade-1.jpg",
+    src: "/images/salades/salade-1.jpg",
     alt: "Salade fraîcheur — fleur comestible, cranberries, pousses",
     label: "Salade Fraîcheur",
     span: "hero",
   },
   {
-    src: "/images/salade-2.jpg",
+    src: "/images/salades/salade-2.jpg",
     alt: "Salade bowl — mangue, betterave, pousses, graines de lin",
     label: "Bowl Tropical",
     span: "tile",
   },
   {
-    src: "/images/salade-3.jpg",
-    alt: "Salade bowl — fraises, betterave, baies de goji, riz curcuma",
+    src: "/images/salades/salade-3.jpg",
+    alt: "Salade bowl — melon, concombre, cranberries, vinaigrette",
     label: "Bowl Signature",
     span: "tile",
   },

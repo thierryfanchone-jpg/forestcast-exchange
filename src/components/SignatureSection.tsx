@@ -6,19 +6,19 @@ import { motion, useInView } from "framer-motion";
 
 const SIGNATURES = [
   {
-    src: "/images/burger-signature.jpg",
-    alt: "Burger Signature — pain maïs, garniture végétale premium",
+    src: "/images/specialites/specialite-1.jpg",
+    alt: "Burger Signature — pain maïs, graines de courge, garniture maison",
     label: "Burger Signature",
     description:
-      "Pain maïs artisanal, garniture végétale généreuse, sauce secrète maison. Une explosion de saveurs caribéennes.",
+      "Pain maïs artisanal aux graines de courge, garniture végétale généreuse, sauce secrète maison. Une explosion de saveurs caribéennes.",
     category: "Spécialités maison",
   },
   {
-    src: "/images/brownie-signature.jpg",
-    alt: "Brownie Signature — chocolat intense, sans gluten",
+    src: "/images/gateaux/gateau-3.jpg",
+    alt: "Brownie Signature — chocolat intense, fraises lyophilisées, sans gluten",
     label: "Brownie Signature",
     description:
-      "Intense, fondant, sans gluten. Notre brownie maison est élaboré avec du cacao pur et des matières premières sélectionnées.",
+      "Intense, fondant, sans gluten. Notre brownie maison est élaboré avec du cacao pur, ganache veloutée et fraises lyophilisées.",
     category: "Gâteaux & biscuits",
   },
 ];

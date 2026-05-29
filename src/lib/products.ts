@@ -46,14 +46,14 @@ export const CATEGORY_DESCRIPTIONS: Record<ProductCategory, string> = {
 };
 
 export const CATEGORY_IMAGES: Record<ProductCategory, string> = {
-  menus: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop",
-  salades: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&q=80&auto=format&fit=crop",
-  biscuits: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80&auto=format&fit=crop",
-  gateaux: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=600&q=80&auto=format&fit=crop",
-  specialites: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop",
-  boissons: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80&auto=format&fit=crop",
-  condiments: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600&q=80&auto=format&fit=crop",
-  epicerie: "https://images.unsplash.com/photo-1542601906897-ecd92854bdca?w=600&q=80&auto=format&fit=crop",
+  menus: "/images/menus/menu-1.jpg",
+  salades: "/images/salades/salade-1.jpg",
+  biscuits: "/images/biscuits/biscuit-1.jpg",
+  gateaux: "/images/gateaux/gateau-2.jpg",
+  specialites: "/images/specialites/specialite-1.jpg",
+  boissons: "/images/boissons/boisson-1.jpg",
+  condiments: "/images/condiments/condiment-1.jpg",
+  epicerie: "/images/epicerie-fine/epicerie-1.jpg",
   traiteur: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&q=80&auto=format&fit=crop",
 };
 
@@ -66,7 +66,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Notre menu emblématique : entrée fraîche, plat créole maison et dessert artisanal. Une expérience culinaire caribéenne complète.",
     price: 18.5,
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop",
+    image: "/images/menus/menu-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -78,7 +78,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Salade tropicale, plat équilibré aux légumes du soleil et boisson détox gingembre. Conçu pour nourrir et revitaliser.",
     price: 16.5,
-    image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80&auto=format&fit=crop",
+    image: "/images/menus/menu-2.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -89,7 +89,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Festif et généreux : assortiment de spécialités antillaises, gâteau artisanal et punch coco vanille.",
     price: 22.0,
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop",
+    image: "/images/menus/menu-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -101,7 +101,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Mangue fraîche, avocat, crevettes dorées, coriandre et vinaigrette au fruit de la passion. Une explosion de saveurs.",
     price: 9.5,
-    image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800&q=80&auto=format&fit=crop",
+    image: "/images/salades/salade-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -113,7 +113,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Crevettes marinées aux épices créoles, avocat crémeux, tomates cerises et herbes fraîches du jardin.",
     price: 11.0,
-    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800&q=80&auto=format&fit=crop",
+    image: "/images/salades/salade-2.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -124,7 +124,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Un arc de légumes colorés, graines de sésame, noix de cajou et sauce tahini au citron vert.",
     price: 8.5,
-    image: "https://images.unsplash.com/photo-1607532941433-304659e8198a?w=800&q=80&auto=format&fit=crop",
+    image: "/images/salades/salade-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -136,7 +136,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Tendres biscuits à la farine de noix de coco et vanille bourbon de Madagascar. Croquants dehors, fondants dedans.",
     price: 6.5,
-    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=800&q=80&auto=format&fit=crop",
+    image: "/images/biscuits/biscuit-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -148,7 +148,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Riches en chocolat noir 70 % et éclats d'amandes torréfiées. Un péché mignon sain et généreux.",
     price: 7.0,
-    image: "https://images.unsplash.com/photo-1606313564200-e75d5e0a7eba?w=800&q=80&auto=format&fit=crop",
+    image: "/images/biscuits/biscuit-2.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -159,7 +159,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Biscuits épicés au gingembre frais, cannelle et cardamome. Chaleureux, réconfortants et digestes.",
     price: 6.0,
-    image: "https://images.unsplash.com/photo-1549297432-39f4fa2cbf94?w=800&q=80&auto=format&fit=crop",
+    image: "/images/biscuits/biscuit-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -171,7 +171,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Fondant au chocolat noir 70 %, ganache veloutée et éclats de fèves de cacao. Une intensité maîtrisée.",
     price: 24.0,
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&q=80&auto=format&fit=crop",
+    image: "/images/gateaux/gateau-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -183,7 +183,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Notre signature caribéenne : moelleux à la patate douce, épices douces et caramel à la noix de coco.",
     price: 22.0,
-    image: "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=800&q=80&auto=format&fit=crop",
+    image: "/images/gateaux/gateau-2.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -195,7 +195,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Moelleux à la farine de coco, cœur coulant au coulis de mangue fraîche et zestes de citron vert.",
     price: 26.0,
-    image: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=800&q=80&auto=format&fit=crop",
+    image: "/images/gateaux/gateau-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -207,7 +207,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Patate douce rôtie, sauce créole épicée et herbes fraîches. Le comfort food caribéen dans toute sa splendeur.",
     price: 12.5,
-    image: "https://images.unsplash.com/photo-1567575584893-a81b5de3c7b1?w=800&q=80&auto=format&fit=crop",
+    image: "/images/specialites/specialite-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -219,7 +219,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Colombo de poulet mijoté aux épices antillaises, servi avec riz basmati parfumé et chutneys maison.",
     price: 14.5,
-    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&auto=format&fit=crop",
+    image: "/images/specialites/specialite-2.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -230,7 +230,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Igname cuisiné à la crème de coco, gratiné au four et parfumé aux herbes aromatiques des Antilles.",
     price: 13.0,
-    image: "https://images.unsplash.com/photo-1547592180-85f173990554?w=800&q=80&auto=format&fit=crop",
+    image: "/images/specialites/specialite-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -242,7 +242,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Infusion de gingembre frais pressé, citron bio et miel de fleurs sauvages. Détox et revitalisante.",
     price: 4.5,
-    image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=800&q=80&auto=format&fit=crop",
+    image: "/images/boissons/boisson-1.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -253,7 +253,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Infusion de fleurs d'hibiscus biologiques avec menthe fraîche et sucre de canne artisanal.",
     price: 5.0,
-    image: "https://images.unsplash.com/photo-1560717843-51c32d85b84c?w=800&q=80&auto=format&fit=crop",
+    image: "/images/boissons/boisson-2.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -265,7 +265,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Lait de coco pressé, vanille de Madagascar, sirop d'agave et une touche de muscade. Douceur tropicale.",
     price: 5.5,
-    image: "https://images.unsplash.com/photo-1498429152472-9a433d9ddf47?w=800&q=80&auto=format&fit=crop",
+    image: "/images/boissons/boisson-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -277,7 +277,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Mélange d'épices antillaises douces, oignons lentement confits et aromates séchés. Polyvalent et savoureux.",
     price: 5.5,
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80&auto=format&fit=crop",
+    image: "/images/condiments/condiment-1.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -288,7 +288,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Notre sauce chien antillaise revisitée : ciboulette, piment doux, citron frais et herbes du jardin.",
     price: 6.0,
-    image: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&q=80&auto=format&fit=crop",
+    image: "/images/condiments/condiment-2.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -300,7 +300,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Piments doux et forts confits à l'huile de coco vierge, avec ail et thym. Intense et parfumé.",
     price: 7.5,
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=800&q=80&auto=format&fit=crop",
+    image: "/images/condiments/condiment-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -312,7 +312,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Une sélection curatée de nos meilleurs produits : condiments, biscuits et spécialités. Le cadeau idéal.",
     price: 35.0,
-    image: "https://images.unsplash.com/photo-1542601906897-ecd92854bdca?w=800&q=80&auto=format&fit=crop",
+    image: "/images/epicerie-fine/epicerie-1.jpg",
     glutenFree: true,
     lactoseFree: true,
     featured: true,
@@ -324,7 +324,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Huile de coco extra-vierge première pression à froid, issue de l'agriculture biologique.",
     price: 12.0,
-    image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=800&q=80&auto=format&fit=crop",
+    image: "/images/epicerie-fine/epicerie-2.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
@@ -335,7 +335,7 @@ export const PRODUCTS: Product[] = [
     description:
       "Confiture artisanale de goyave rose des Antilles, sucrée au sucre de canne complet non raffiné.",
     price: 8.5,
-    image: "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=800&q=80&auto=format&fit=crop",
+    image: "/images/epicerie-fine/epicerie-3.jpg",
     glutenFree: true,
     lactoseFree: true,
   },
