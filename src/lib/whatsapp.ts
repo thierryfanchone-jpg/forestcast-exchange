@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "+5966969082573";
+import { WHATSAPP_NUMBER } from "./config";
 import type { CartItem } from "./cart-store";
 
 export type OrderData = {
