@@ -1,16 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/lib/cart-store";
-import { Header } from "@/components/Header";
-import { Cart } from "@/components/Cart";
-import { SiteFooter } from "@/components/SiteFooter";
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -19,34 +11,32 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#2563eb",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
   title: {
-    default: "Les Ateliers de la Forme — Cuisine Saine, Gourmande & Premium",
-    template: "%s · Les Ateliers de la Forme",
+    default: "DepannIA — Assistant dépannage habitat 24h/24",
+    template: "%s · DepannIA",
   },
   description:
-    "Cuisine premium, saine et gourmande, sans gluten et sans lactose. Des créations maison inspirées des saveurs caribéennes, pensées pour le plaisir et le bien-être. Fondé par Thierry Fanchone en 2017.",
+    "DepannIA vous aide à diagnostiquer vos pannes habitat, évaluer les risques et trouver un artisan qualifié rapidement. Électricité, plomberie, climatisation, électroménager, serrurerie.",
   keywords: [
-    "cuisine saine",
-    "sans gluten",
-    "sans lactose",
-    "caribéen",
-    "traiteur antillais",
-    "épicerie fine",
-    "Thierry Fanchone",
-    "Les Ateliers de la Forme",
-    "bien-être",
-    "gâteau sans gluten",
+    "dépannage",
+    "diagnostic panne",
+    "artisan urgent",
+    "électricien",
+    "plombier",
+    "climatisation",
+    "serrurier",
+    "aide dépannage",
+    "assistant IA habitat",
   ],
   openGraph: {
-    title: "Les Ateliers de la Forme — Cuisine Caribéenne Premium",
-    description:
-      "Cuisine saine, gourmande et premium. Sans gluten, sans lactose. Des créations maison inspirées des Caraïbes.",
+    title: "DepannIA — Assistant dépannage habitat 24h/24",
+    description: "Diagnostic IA, conseils de sécurité et mise en relation avec des artisans qualifiés.",
     type: "website",
   },
 };
@@ -57,14 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-deep font-sans text-cream antialiased">
-        <CartProvider>
-          <Header />
-          <Cart />
-          <main>{children}</main>
-          <SiteFooter />
-        </CartProvider>
+    <html lang="fr" className={inter.variable}>
+      <body className="min-h-screen bg-slate-50 font-sans antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

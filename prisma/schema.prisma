@@ -1,5 +1,5 @@
-// Forecaxt — forecast exchange schema
-// Datasource: PostgreSQL. Use `prisma db push` for local development.
+// DepannIA — Prisma schema
+// https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -10,235 +10,70 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum MarketCategory {
-  Politics
-  Economy
-  Crypto
-  Sports
-  Caribbean
-  Africa
-  Technology
-  Energy
-}
-
-enum MarketStatus {
-  open
-  closing_soon
-  resolved
-  disputed
-  cancelled
-}
-
-enum OracleSource {
-  chainlink
-  uma
-  reuters
-  ap
-  sport_api
-  manual
-}
-
-enum OrderSide {
-  yes
-  no
-}
-
-enum OrderType {
-  market
-  limit
-}
-
-enum OrderStatus {
-  open
-  filled
-  partial
-  cancelled
-  rejected
-}
-
-enum KycStatus {
-  none
-  pending
-  verified
-  rejected
-}
-
-enum UserLevel {
-  Rookie
-  Analyst
-  Strategist
-  Forecaster
-  Oracle
-}
-
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  handle        String    @unique
-  passwordHash  String?
-  walletAddress String?   @unique
-  level         UserLevel @default(Rookie)
-  xp            Int       @default(0)
-  accuracy      Float     @default(0)
-  streak        Int       @default(0)
-  kycStatus     KycStatus @default(none)
-  twoFaSecret   String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-
-  balance       Balance?
-  positions     Position[]
-  orders        Order[]
-  transactions  Transaction[]
-  badges        UserBadge[]
-  notifications Notification[]
-}
-
-model Balance {
-  id     String @id @default(cuid())
-  userId String @unique
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  usd    Float  @default(0)
-  usdc   Float  @default(0)
-}
-
-model Market {
-  id            String         @id @default(cuid())
-  slug          String         @unique
-  title         String
-  description   String
-  category      MarketCategory
-  region        String? // EU, AF, CB, GLOBAL
-  status        MarketStatus   @default(open)
-  probability   Float          @default(0.5)
-  volume        Float          @default(0)
-  liquidity     Float          @default(0)
-  openInterest  Float          @default(0)
-  oracle        OracleSource
-  tags          String[]
-  closesAt      DateTime
-  resolvedAt    DateTime?
-  outcome       Boolean?
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-
-  positions     Position[]
-  orders        Order[]
-  pricePoints   PricePoint[]
-  oracleResults OracleResult[]
-}
-
-model PricePoint {
-  id       String   @id @default(cuid())
-  marketId String
-  market   Market   @relation(fields: [marketId], references: [id], onDelete: Cascade)
-  t        DateTime
-  p        Float
-  v        Float?
-  @@index([marketId, t])
-}
-
-model Position {
-  id        String    @id @default(cuid())
-  userId    String
-  marketId  String
-  side      OrderSide
-  shares    Float
-  avgPrice  Float
-  pnl       Float     @default(0)
-  openedAt  DateTime  @default(now())
-  closedAt  DateTime?
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  market Market @relation(fields: [marketId], references: [id], onDelete: Cascade)
-
-  @@index([userId, marketId])
-}
-
-model Order {
-  id        String      @id @default(cuid())
-  userId    String
-  marketId  String
-  side      OrderSide
-  type      OrderType
-  price     Float
-  size      Float
-  filled    Float       @default(0)
-  status    OrderStatus @default(open)
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
-
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  market Market @relation(fields: [marketId], references: [id], onDelete: Cascade)
-
-  @@index([marketId, status])
-  @@index([userId])
-}
-
-model Transaction {
-  id        String   @id @default(cuid())
-  userId    String
-  kind      String // deposit, withdrawal, trade, fee, settlement
-  amount    Float
-  currency  String   @default("USDC")
-  meta      Json?
-  createdAt DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  @@index([userId, createdAt])
-}
-
-model OracleResult {
   id          String       @id @default(cuid())
-  marketId    String
-  source      OracleSource
-  outcome     Boolean
-  proof       Json?
-  submittedBy String?
-  disputed    Boolean      @default(false)
-  finalizedAt DateTime?
+  email       String       @unique
+  name        String?
   createdAt   DateTime     @default(now())
+  diagnostics Diagnostic[]
 
-  market Market @relation(fields: [marketId], references: [id], onDelete: Cascade)
-  @@index([marketId])
+  @@map("users")
 }
 
-model Notification {
+model Diagnostic {
+  id          String   @id @default(cuid())
+  userId      String?
+  category    String
+  description String
+  imageUrl    String?
+  resultJson  Json?
+  dangerLevel String?
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+
+  @@map("diagnostics")
+}
+
+model LeadRequest {
+  id          String   @id @default(cuid())
+  category    String
+  name        String
+  phone       String
+  email       String
+  city        String
+  description String
+  imageUrl    String?
+  status      String   @default("nouveau")
+  createdAt   DateTime @default(now())
+
+  @@map("lead_requests")
+}
+
+model ArtisanProfile {
+  id               String   @id @default(cuid())
+  companyName      String
+  contactName      String
+  trade            String
+  siret            String?
+  phone            String
+  email            String
+  city             String
+  serviceAreas     String
+  availability     String
+  subscriptionType String
+  status           String   @default("pending")
+  createdAt        DateTime @default(now())
+
+  @@map("artisan_profiles")
+}
+
+model KnowledgeGuide {
   id        String   @id @default(cuid())
-  userId    String
-  kind      String
   title     String
-  body      String
-  read      Boolean  @default(false)
+  slug      String   @unique
+  category  String
+  content   Json
   createdAt DateTime @default(now())
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  @@index([userId, read])
-}
-
-model Badge {
-  id          String      @id @default(cuid())
-  code        String      @unique
-  name        String
-  description String
-  users       UserBadge[]
-}
-
-model UserBadge {
-  userId    String
-  badgeId   String
-  earnedAt  DateTime @default(now())
-
-  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  badge Badge @relation(fields: [badgeId], references: [id], onDelete: Cascade)
-
-  @@id([userId, badgeId])
-}
-
-model LeaderboardSnapshot {
-  id        String   @id @default(cuid())
-  period    String // weekly, monthly, all_time
-  takenAt   DateTime @default(now())
-  payload   Json
-  @@index([period, takenAt])
+  @@map("knowledge_guides")
 }

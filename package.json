@@ -1,8 +1,8 @@
 {
-  "name": "forecaxt",
+  "name": "depannia",
   "version": "0.1.0",
   "private": true,
-  "description": "Forecaxt — Premium prediction market & event trading platform for European, African and Caribbean markets.",
+  "description": "DepannIA — Assistant dépannage habitat 24h/24 avec diagnostic IA et mise en relation artisans.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
