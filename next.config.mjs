@@ -8,12 +8,6 @@ const nextConfig = {
       { protocol: 'https', hostname: 'placeholder.ia-artisan.fr' },
     ],
   },
-  // Allow large file uploads in API routes
-  api: {
-    bodyParser: {
-      sizeLimit: '100mb',
-    },
-  },
 };
 
 export default nextConfig;

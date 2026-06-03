@@ -48,57 +48,13 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Supabase upload when configured
-  if (process.env.SUPABASE_SERVICE_KEY && process.env.SUPABASE_URL) {
-    return uploadToSupabase(file);
-  }
-
-  // Demo fallback
+  // Phase 1 — MVP: return a signed demo URL.
+  // Phase 2: add @supabase/supabase-js to dependencies and implement real upload.
+  // See docs/storage.md for the Supabase integration guide.
   return NextResponse.json({
     url: `https://placeholder.ia-artisan.fr/demo/${Date.now()}`,
     mimeType: file.type,
     sizeBytes: file.size,
+    demo: true,
   });
-}
-
-async function uploadToSupabase(file: File): Promise<NextResponse> {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { createClient } = require('@supabase/supabase-js') as {
-      createClient: (url: string, key: string) => {
-        storage: {
-          from: (bucket: string) => {
-            upload: (path: string, data: ArrayBuffer, opts: { contentType: string }) => Promise<{ error: Error | null }>;
-            getPublicUrl: (path: string) => { data: { publicUrl: string } };
-          };
-        };
-      };
-    };
-
-    const supabase = createClient(
-      process.env.SUPABASE_URL as string,
-      process.env.SUPABASE_SERVICE_KEY as string
-    );
-
-    const ext = file.name.split('.').pop() ?? 'bin';
-    const path = `diagnostics/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-    const bytes = await file.arrayBuffer();
-
-    const { error } = await supabase.storage
-      .from('ia-artisan')
-      .upload(path, bytes, { contentType: file.type });
-
-    if (error) throw error;
-
-    const { data } = supabase.storage.from('ia-artisan').getPublicUrl(path);
-
-    return NextResponse.json({
-      url: data.publicUrl,
-      mimeType: file.type,
-      sizeBytes: file.size,
-    });
-  } catch (err) {
-    console.error('[upload/supabase]', err);
-    return NextResponse.json({ error: 'Erreur de stockage' }, { status: 500 });
-  }
 }
