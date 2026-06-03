@@ -1,52 +1,41 @@
-"use client";
-
-import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger";
-type Size = "sm" | "md" | "lg";
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: Variant;
-  size?: Size;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "danger";
+  size?: "sm" | "md" | "lg";
   loading?: boolean;
 }
 
-const variantClass: Record<Variant, string> = {
-  primary:
-    "bg-accent-green text-black hover:brightness-110 shadow-glow disabled:opacity-50",
-  secondary:
-    "border border-white/[0.08] bg-white/[0.03] text-ink-primary hover:bg-white/[0.06]",
-  ghost: "text-ink-secondary hover:bg-white/[0.04] hover:text-ink-primary",
-  danger: "bg-danger text-white hover:brightness-110",
+const variantClasses = {
+  primary: "btn-primary",
+  secondary: "btn-secondary",
+  outline: "btn-outline",
+  ghost: "text-slate-400 hover:text-white hover:bg-white/5 rounded-lg px-4 py-2",
+  danger: "bg-danger/15 text-red-400 hover:bg-danger/25 rounded-lg",
 };
 
-const sizeClass: Record<Size, string> = {
-  sm: "px-3 py-1.5 text-xs",
-  md: "px-4 py-2.5 text-sm",
-  lg: "px-5 py-3 text-base",
+const sizeClasses = {
+  sm: "px-4 py-2 text-xs",
+  md: "px-6 py-3 text-sm",
+  lg: "px-8 py-4 text-base",
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = "primary", size = "md", loading, className, children, ...props },
-  ref,
-) {
-  return (
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ variant = "primary", size = "md", loading, className, children, disabled, ...props }, ref) => (
     <button
       ref={ref}
-      className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all active:scale-[0.98] disabled:cursor-not-allowed",
-        variantClass[variant],
-        sizeClass[size],
-        className,
-      )}
-      disabled={loading || props.disabled}
+      disabled={disabled || loading}
+      className={cn(variantClasses[variant], sizeClasses[size], className)}
       {...props}
     >
       {loading ? (
-        <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-current border-t-transparent" />
-      ) : null}
-      {children}
+        <span className="inline-block h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+      ) : (
+        children
+      )}
     </button>
-  );
-});
+  )
+);
+
+Button.displayName = "Button";

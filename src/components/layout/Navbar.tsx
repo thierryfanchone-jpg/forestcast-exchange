@@ -1,90 +1,110 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Search, Sun, Moon, Wallet } from "lucide-react";
-import { Logo } from "./Logo";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
 
-const NAV = [
-  { href: "/markets", label: "Markets" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/leaderboard", label: "Leaderboard" },
-  { href: "/learn", label: "Learn" },
+const NAV_LINKS = [
+  { href: "/", label: "Accueil" },
+  { href: "/formations", label: "Formations" },
+  { href: "/tarifs", label: "Tarifs" },
+  { href: "/dashboard/coach", label: "Coach IA" },
 ];
 
 export function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("light", theme === "light");
-    root.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.05] bg-bg/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Logo />
-        <nav className="hidden items-center gap-1 md:flex">
-          {NAV.map((n) => {
-            const active = pathname.startsWith(n.href);
-            return (
-              <Link
-                key={n.href}
-                href={n.href}
-                className={cn(
-                  "relative rounded-lg px-3 py-1.5 text-sm transition-colors",
-                  active
-                    ? "text-ink-primary"
-                    : "text-ink-secondary hover:text-ink-primary",
-                )}
-              >
-                {n.label}
-                {active ? (
-                  <span className="absolute inset-x-2 -bottom-[17px] h-px bg-gradient-to-r from-transparent via-accent-green to-transparent" />
-                ) : null}
-              </Link>
-            );
-          })}
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        scrolled || mobileOpen
+          ? "border-b border-navy-border bg-navy/95 backdrop-blur-md"
+          : "bg-transparent"
+      )}
+    >
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-1">
+          <span className="font-serif text-xl font-bold text-gold">ORION</span>
+          <span className="text-xl font-semibold tracking-widest text-white">ACADEMY</span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-6 md:flex">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                "text-sm font-medium transition-colors duration-200",
+                pathname === link.href
+                  ? "text-gold"
+                  : "text-slate-300 hover:text-white"
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
-          <div className="hidden lg:flex">
-            <label className="relative flex w-72 items-center">
-              <Search className="absolute left-3 h-4 w-4 text-ink-secondary" />
-              <input
-                type="search"
-                placeholder="Search markets, tags…"
-                className="h-9 w-full rounded-lg border border-white/[0.06] bg-white/[0.03] pl-9 pr-3 text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent-green/40 focus:outline-none focus:ring-2 focus:ring-accent-green/20"
-              />
-            </label>
-          </div>
-
-          <button
-            className="btn-ghost h-9 w-9 justify-center p-0"
-            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
-
-          <button className="btn-ghost h-9 w-9 justify-center p-0" aria-label="Notifications">
-            <Bell className="h-4 w-4" />
-          </button>
-
-          <Link href="/portfolio" className="btn-secondary hidden h-9 sm:inline-flex">
-            <Wallet className="h-4 w-4" />
-            <span className="font-mono text-xs">$8,412.40</span>
+        {/* Desktop CTA */}
+        <div className="hidden items-center gap-3 md:flex">
+          <Link href="/connexion" className="btn-outline py-2 px-4 text-xs">
+            Connexion
           </Link>
-
-          <Link href="/login" className="btn-primary h-9">
-            Sign in
+          <Link href="/inscription" className="btn-primary py-2 px-4 text-xs">
+            Commencer
           </Link>
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          className="flex h-10 w-10 items-center justify-center rounded-lg text-white md:hidden"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Menu"
+        >
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="border-t border-navy-border bg-navy px-4 py-6 md:hidden">
+          <nav className="flex flex-col gap-4">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "text-base font-medium transition-colors",
+                  pathname === link.href ? "text-gold" : "text-slate-300"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="mt-4 flex flex-col gap-3">
+              <Link href="/connexion" onClick={() => setMobileOpen(false)} className="btn-outline">
+                Connexion
+              </Link>
+              <Link href="/inscription" onClick={() => setMobileOpen(false)} className="btn-primary">
+                Commencer gratuitement
+              </Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
