@@ -2,73 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --gold: #c9a84c;
-  --cream: #f5f0e8;
-  --forest: #1a3a2a;
-  --deep: #0a0a0a;
-}
+@layer base {
+  html {
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-html,
-body {
-  background-color: var(--deep);
-  color: var(--cream);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
 
-::selection {
-  background: rgba(201, 168, 76, 0.3);
-  color: #f5f0e8;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 8px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(201, 168, 76, 0.3);
-}
-::-webkit-scrollbar-track {
-  background: transparent;
+  ::selection {
+    @apply bg-indigo-100 text-indigo-900;
+  }
 }
 
 @layer components {
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 border border-gold bg-gold px-8 py-3.5 text-xs font-semibold uppercase tracking-widest text-deep transition-all duration-300 hover:bg-transparent hover:text-gold;
-  }
-  .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border border-cream/40 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest text-cream transition-all duration-300 hover:border-gold hover:text-gold;
-  }
-  .btn-whatsapp {
-    @apply inline-flex w-full items-center justify-center gap-2 bg-[#25D366] py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-200 hover:bg-[#1aab50];
-  }
-  .section-title {
-    @apply font-serif text-3xl font-normal leading-snug text-cream md:text-4xl lg:text-5xl;
-  }
-  .gold-line {
-    @apply h-px bg-gradient-to-r from-transparent via-gold to-transparent;
-  }
-  .badge-gl {
-    @apply inline-flex items-center gap-1 rounded-full bg-forest/80 px-2.5 py-0.5 text-[10px] font-medium text-gold backdrop-blur-sm;
-  }
-  .card-dark {
-    @apply border border-cream/5 bg-surface-1 transition-all duration-300 hover:border-gold/20 hover:shadow-gold-sm;
-  }
-  .input-dark {
-    @apply w-full border border-cream/10 bg-surface-2 px-3 py-2.5 text-sm text-cream placeholder-cream/30 transition-colors focus:border-gold focus:outline-none;
-  }
-}
-
-@layer utilities {
-  .text-gradient-gold {
-    background: linear-gradient(135deg, #e8c96a, #c9a84c, #9e7a2a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .container {
+    @apply mx-auto max-w-6xl px-4 sm:px-6;
   }
 }

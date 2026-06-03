@@ -1,65 +1,56 @@
-import Link from "next/link";
-import { Logo } from "./Logo";
+import Link from 'next/link';
+import { Wrench } from 'lucide-react';
 
 const cols = [
   {
-    title: "Platform",
+    title: 'Plateforme',
     links: [
-      { href: "/markets", label: "Markets" },
-      { href: "/leaderboard", label: "Leaderboard" },
-      { href: "/learn", label: "Learn" },
-      { href: "/pricing", label: "Pricing" },
+      { href: '/diagnostic', label: 'Faire un diagnostic' },
+      { href: '/tarifs', label: 'Tarifs' },
+      { href: '/artisans', label: 'Artisans partenaires' },
+      { href: '/dashboard', label: 'Mon espace' },
     ],
   },
   {
-    title: "Developers",
+    title: 'Domaines',
     links: [
-      { href: "/api-docs", label: "API Docs" },
-      { href: "/api-docs#websocket", label: "WebSocket" },
-      { href: "/api-docs#contracts", label: "Smart Contracts" },
-      { href: "https://status.forecaxt.com", label: "Status" },
+      { href: '/diagnostic?domain=electricite', label: 'Électricité' },
+      { href: '/diagnostic?domain=plomberie', label: 'Plomberie' },
+      { href: '/diagnostic?domain=climatisation', label: 'Climatisation' },
+      { href: '/diagnostic?domain=securite_incendie', label: 'Sécurité incendie' },
     ],
   },
   {
-    title: "Company",
+    title: 'Légal',
     links: [
-      { href: "/about", label: "About" },
-      { href: "/careers", label: "Careers" },
-      { href: "/press", label: "Press" },
-      { href: "/contact", label: "Contact" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { href: "/legal/terms", label: "Terms" },
-      { href: "/legal/privacy", label: "Privacy" },
-      { href: "/legal/compliance", label: "Compliance" },
-      { href: "/legal/risk", label: "Risk Disclosure" },
+      { href: '/mentions-legales', label: 'Mentions légales' },
+      { href: '/confidentialite', label: 'Politique de confidentialité' },
+      { href: '/cgv', label: 'CGV' },
+      { href: '/contact', label: 'Contact' },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/[0.05] bg-surface-1/40">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-green/40 to-transparent" />
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 py-16 md:grid-cols-6">
-        <div className="col-span-2 space-y-4">
-          <Logo />
-          <p className="max-w-sm text-sm text-ink-secondary">
-            Forecaxt is a regulated forecast exchange for event contracts across Europe,
-            Africa and the Caribbean. Real probability, transparent oracles, institutional
-            liquidity.
+    <footer className="border-t border-gray-100 bg-gray-50">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 py-14 sm:grid-cols-2 md:grid-cols-4">
+        <div className="space-y-4">
+          <Link href="/" className="flex items-center gap-2 font-bold text-gray-900">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-600">
+              <Wrench className="h-3.5 w-3.5 text-white" />
+            </div>
+            <span>IA Artisan</span>
+          </Link>
+          <p className="text-sm text-gray-500 leading-relaxed">
+            Diagnostic IA multimodal pour pannes et travaux à domicile. Résultats clairs,
+            conseils de sécurité, mise en relation artisan.
           </p>
-          <div className="flex gap-2 pt-2">
-            <span className="chip">EU MiCA-compliant</span>
-            <span className="chip">SOC 2 Type II</span>
-          </div>
         </div>
+
         {cols.map((c) => (
           <div key={c.title}>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-ink-secondary">
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-gray-400">
               {c.title}
             </h4>
             <ul className="space-y-2">
@@ -67,7 +58,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="text-sm text-ink-secondary transition-colors hover:text-ink-primary"
+                    className="text-sm text-gray-500 transition-colors hover:text-gray-900"
                   >
                     {l.label}
                   </Link>
@@ -77,12 +68,11 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-white/[0.05]">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-5 text-xs text-ink-secondary">
-          <span>© {new Date().getFullYear()} Forecaxt SA. All rights reserved.</span>
-          <span className="font-mono">
-            Forecast Exchange · Event Contracts · Probability Markets
-          </span>
+
+      <div className="border-t border-gray-200">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-5 text-xs text-gray-400">
+          <span>© {new Date().getFullYear()} IA Artisan. Tous droits réservés.</span>
+          <span>Pré-diagnostic IA — Ne remplace pas un professionnel certifié</span>
         </div>
       </div>
     </footer>
