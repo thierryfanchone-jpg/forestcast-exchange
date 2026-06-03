@@ -1,8 +1,8 @@
 {
-  "name": "forecaxt",
+  "name": "ia-artisan",
   "version": "0.1.0",
   "private": true,
-  "description": "Forecaxt — Premium prediction market & event trading platform for European, African and Caribbean markets.",
+  "description": "IA Artisan — Diagnostic IA multimodal pour pannes et travaux à domicile.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -19,23 +19,29 @@
     "node": "20.x"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "@google/generative-ai": "^0.21.0",
     "@prisma/client": "^5.22.0",
+    "@stripe/stripe-js": "^4.9.0",
     "@types/node": "^22.9.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/uuid": "^10.0.0",
     "@vercel/analytics": "^2.0.1",
     "autoprefixer": "^10.4.20",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
     "lucide-react": "^0.460.0",
     "next": "^15.5.7",
+    "openai": "^4.73.0",
     "postcss": "^8.4.49",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^2.13.3",
+    "stripe": "^17.3.1",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3",
+    "uuid": "^11.0.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {

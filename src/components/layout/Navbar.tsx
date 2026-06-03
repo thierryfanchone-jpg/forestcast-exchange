@@ -1,33 +1,35 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Bell, Search, Sun, Moon, Wallet } from "lucide-react";
-import { Logo } from "./Logo";
-import { cn } from "@/lib/utils";
-import { useEffect, useState } from "react";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Menu, X, Wrench } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useState } from 'react';
+import { Button } from '@/components/ui/Button';
 
 const NAV = [
-  { href: "/markets", label: "Markets" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/leaderboard", label: "Leaderboard" },
-  { href: "/learn", label: "Learn" },
+  { href: '/diagnostic', label: 'Diagnostic' },
+  { href: '/tarifs', label: 'Tarifs' },
+  { href: '/artisans', label: 'Artisans' },
+  { href: '/dashboard', label: 'Mon espace' },
 ];
 
 export function Navbar() {
   const pathname = usePathname();
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.toggle("light", theme === "light");
-    root.classList.toggle("dark", theme === "dark");
-  }, [theme]);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.05] bg-bg/70 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6">
-        <Logo />
+    <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 backdrop-blur-sm">
+      <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4 sm:px-6">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2.5 font-bold text-gray-900">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+            <Wrench className="h-4 w-4 text-white" />
+          </div>
+          <span className="text-lg">IA Artisan</span>
+        </Link>
+
+        {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex">
           {NAV.map((n) => {
             const active = pathname.startsWith(n.href);
@@ -36,55 +38,64 @@ export function Navbar() {
                 key={n.href}
                 href={n.href}
                 className={cn(
-                  "relative rounded-lg px-3 py-1.5 text-sm transition-colors",
+                  'rounded-lg px-3 py-2 text-sm font-medium transition-colors',
                   active
-                    ? "text-ink-primary"
-                    : "text-ink-secondary hover:text-ink-primary",
+                    ? 'bg-indigo-50 text-indigo-700'
+                    : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 )}
               >
                 {n.label}
-                {active ? (
-                  <span className="absolute inset-x-2 -bottom-[17px] h-px bg-gradient-to-r from-transparent via-accent-green to-transparent" />
-                ) : null}
               </Link>
             );
           })}
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <div className="hidden lg:flex">
-            <label className="relative flex w-72 items-center">
-              <Search className="absolute left-3 h-4 w-4 text-ink-secondary" />
-              <input
-                type="search"
-                placeholder="Search markets, tags…"
-                className="h-9 w-full rounded-lg border border-white/[0.06] bg-white/[0.03] pl-9 pr-3 text-sm text-ink-primary placeholder:text-ink-secondary focus:border-accent-green/40 focus:outline-none focus:ring-2 focus:ring-accent-green/20"
-              />
-            </label>
-          </div>
+          <Link href="/diagnostic" className="hidden sm:block">
+            <Button size="md">Analyser une panne</Button>
+          </Link>
 
+          {/* Mobile hamburger */}
           <button
-            className="btn-ghost h-9 w-9 justify-center p-0"
-            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-            aria-label="Toggle theme"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 md:hidden"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
           >
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-
-          <button className="btn-ghost h-9 w-9 justify-center p-0" aria-label="Notifications">
-            <Bell className="h-4 w-4" />
-          </button>
-
-          <Link href="/portfolio" className="btn-secondary hidden h-9 sm:inline-flex">
-            <Wallet className="h-4 w-4" />
-            <span className="font-mono text-xs">$8,412.40</span>
-          </Link>
-
-          <Link href="/login" className="btn-primary h-9">
-            Sign in
-          </Link>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="border-t border-gray-100 bg-white px-4 py-4 md:hidden">
+          <nav className="flex flex-col gap-1">
+            {NAV.map((n) => {
+              const active = pathname.startsWith(n.href);
+              return (
+                <Link
+                  key={n.href}
+                  href={n.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    'rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                    active
+                      ? 'bg-indigo-50 text-indigo-700'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  )}
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
+            <Link href="/diagnostic" onClick={() => setMobileOpen(false)}>
+              <Button size="md" className="mt-2 w-full">
+                Analyser une panne
+              </Button>
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
