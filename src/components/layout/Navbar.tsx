@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { href: "/formations", label: "Formations" },
   { href: "/tarifs", label: "Tarifs" },
   { href: "/dashboard/coach", label: "Coach IA" },
+  { href: "/orion-plus", label: "ORION PLUS", highlight: true },
 ];
 
 export function Navbar() {
@@ -42,18 +43,28 @@ export function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">
           {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors duration-200",
-                pathname === link.href
-                  ? "text-gold"
-                  : "text-slate-300 hover:text-white"
-              )}
-            >
-              {link.label}
-            </Link>
+            link.highlight ? (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-bold text-gold transition-colors hover:bg-gold/20"
+              >
+                ✦ {link.label}
+              </Link>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-sm font-medium transition-colors duration-200",
+                  pathname === link.href
+                    ? "text-gold"
+                    : "text-slate-300 hover:text-white"
+                )}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
 

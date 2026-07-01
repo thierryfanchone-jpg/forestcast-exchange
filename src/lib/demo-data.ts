@@ -193,6 +193,25 @@ export const PRICING_PLANS: PricingPlan[] = [
     stripe_price_id: "price_monthly_1490",
     cta: "S'abonner",
   },
+  {
+    id: "plus",
+    name: "ORION PLUS",
+    price: 497,
+    description: "L'accompagnement d'élite",
+    features: [
+      "Tous les modules + contenus exclusifs",
+      "Simulations IA illimitées",
+      "Séances de coaching individuel (×3)",
+      "Feedback personnalisé par expert",
+      "Certification Premium ORION PLUS",
+      "Passeport de compétences avancé",
+      "Groupe privé de mastermind",
+      "Accès prioritaire aux nouveautés",
+    ],
+    is_popular: false,
+    stripe_price_id: "price_plus_497",
+    cta: "Rejoindre ORION PLUS",
+  },
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

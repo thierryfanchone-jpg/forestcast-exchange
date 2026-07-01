@@ -6,6 +6,7 @@ const FOOTER_LINKS = {
     { href: "/formations", label: "Formations" },
     { href: "/tarifs", label: "Tarifs" },
     { href: "/dashboard/coach", label: "Coach IA" },
+    { href: "/orion-plus", label: "✦ ORION PLUS" },
     { href: "/inscription", label: "Créer un compte" },
   ],
   legal: [

@@ -175,7 +175,7 @@ export interface ChatMessage {
   timestamp: Date;
 }
 
-export type PricingPlanId = "gratuit" | "starter" | "pro" | "expert" | "mensuel";
+export type PricingPlanId = "gratuit" | "starter" | "pro" | "expert" | "mensuel" | "plus";
 
 export interface PricingPlan {
   id: PricingPlanId;
