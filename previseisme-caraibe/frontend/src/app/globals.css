@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 45%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 199 89% 48%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 20% 45%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 89%;
+    --input: 214 32% 89%;
+    --ring: 217 91% 45%;
+    --radius: 0.75rem;
+
+    --magnitude-minor: 142 71% 45%;
+    --magnitude-light: 84 81% 44%;
+    --magnitude-moderate: 45 93% 47%;
+    --magnitude-strong: 24 95% 53%;
+    --magnitude-major: 0 72% 51%;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 222 44% 10%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 44% 10%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 210 92% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 199 89% 55%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 24 95% 58%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 63% 55%;
+    --destructive-foreground: 210 40% 96%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 210 92% 60%;
+
+    --magnitude-minor: 142 60% 50%;
+    --magnitude-light: 84 70% 50%;
+    --magnitude-moderate: 45 93% 55%;
+    --magnitude-strong: 24 95% 58%;
+    --magnitude-major: 0 72% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+.maplibregl-popup-content {
+  @apply rounded-lg border border-border bg-popover text-popover-foreground shadow-lg;
+}
+
+.maplibregl-ctrl-attrib {
+  @apply text-xs;
+}

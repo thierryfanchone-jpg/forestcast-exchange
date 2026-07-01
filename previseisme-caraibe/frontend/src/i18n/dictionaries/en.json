@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "worldMap": "World map",
+    "caribbeanMap": "Caribbean",
+    "history": "History",
+    "businesses": "Businesses",
+    "localGov": "Local authorities",
+    "api": "API",
+    "login": "Sign in",
+    "dashboard": "Dashboard"
+  },
+  "common": {
+    "demoModeBanner": "Demo mode — realistic sample data.",
+    "magnitude": "Magnitude",
+    "depth": "Depth",
+    "confidence": "Confidence level",
+    "feltReports": "Felt reports"
+  }
+}

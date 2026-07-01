@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "worldMap": "Mapa mundial",
+    "caribbeanMap": "Caribe",
+    "history": "Historial",
+    "businesses": "Empresas",
+    "localGov": "Administraciones locales",
+    "api": "API",
+    "login": "Iniciar sesión",
+    "dashboard": "Panel de control"
+  },
+  "common": {
+    "demoModeBanner": "Modo demostración — datos de ejemplo realistas.",
+    "magnitude": "Magnitud",
+    "depth": "Profundidad",
+    "confidence": "Nivel de confianza",
+    "feltReports": "Reportes de percepción"
+  }
+}

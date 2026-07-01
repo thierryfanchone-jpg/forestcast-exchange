@@ -1,0 +1,62 @@
+name: previseisme-caraibe
+
+services:
+  postgres:
+    image: postgis/postgis:16-3.4-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: previsisme
+      POSTGRES_PASSWORD: previsisme
+      POSTGRES_DB: previsisme_caraibe
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U previsisme -d previsisme_caraibe"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      ENVIRONMENT: development
+      DATABASE_URL: postgresql+asyncpg://previsisme:previsisme@postgres:5432/previsisme_caraibe
+      REDIS_URL: redis://redis:6379/0
+      CORS_ORIGINS: '["http://localhost:3000"]'
+      USE_DEMO_DATA_FALLBACK: "true"
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres_data:
