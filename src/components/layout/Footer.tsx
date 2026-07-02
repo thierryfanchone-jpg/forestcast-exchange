@@ -1,88 +1,103 @@
 import Link from "next/link";
-import { Logo } from "./Logo";
+import { Mail, Twitter, Linkedin, Instagram } from "lucide-react";
 
-const cols = [
-  {
-    title: "Platform",
-    links: [
-      { href: "/markets", label: "Markets" },
-      { href: "/leaderboard", label: "Leaderboard" },
-      { href: "/learn", label: "Learn" },
-      { href: "/pricing", label: "Pricing" },
-    ],
-  },
-  {
-    title: "Developers",
-    links: [
-      { href: "/api-docs", label: "API Docs" },
-      { href: "/api-docs#websocket", label: "WebSocket" },
-      { href: "/api-docs#contracts", label: "Smart Contracts" },
-      { href: "https://status.forecaxt.com", label: "Status" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { href: "/about", label: "About" },
-      { href: "/careers", label: "Careers" },
-      { href: "/press", label: "Press" },
-      { href: "/contact", label: "Contact" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { href: "/legal/terms", label: "Terms" },
-      { href: "/legal/privacy", label: "Privacy" },
-      { href: "/legal/compliance", label: "Compliance" },
-      { href: "/legal/risk", label: "Risk Disclosure" },
-    ],
-  },
-];
+const FOOTER_LINKS = {
+  plateforme: [
+    { href: "/formations", label: "Formations" },
+    { href: "/tarifs", label: "Tarifs" },
+    { href: "/dashboard/coach", label: "Coach IA" },
+    { href: "/orion-plus", label: "✦ ORION PLUS" },
+    { href: "/inscription", label: "Créer un compte" },
+  ],
+  legal: [
+    { href: "/mentions-legales", label: "Mentions légales" },
+    { href: "/cgv", label: "CGV" },
+    { href: "/cgu", label: "CGU" },
+    { href: "/confidentialite", label: "Confidentialité" },
+  ],
+};
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-white/[0.05] bg-surface-1/40">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-green/40 to-transparent" />
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 py-16 md:grid-cols-6">
-        <div className="col-span-2 space-y-4">
-          <Logo />
-          <p className="max-w-sm text-sm text-ink-secondary">
-            Forecaxt is a regulated forecast exchange for event contracts across Europe,
-            Africa and the Caribbean. Real probability, transparent oracles, institutional
-            liquidity.
-          </p>
-          <div className="flex gap-2 pt-2">
-            <span className="chip">EU MiCA-compliant</span>
-            <span className="chip">SOC 2 Type II</span>
+    <footer className="border-t border-navy-border bg-navy-light">
+      <div className="mx-auto max-w-7xl px-4 py-16 md:px-6">
+        <div className="grid gap-12 md:grid-cols-4">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <div className="mb-4 flex items-center gap-1">
+              <span className="font-serif text-xl font-bold text-gold">ORION</span>
+              <span className="text-xl font-semibold tracking-widest text-white">ACADEMY</span>
+            </div>
+            <p className="mb-6 max-w-sm text-sm leading-relaxed text-slate-400">
+              Apprends. Entraîne-toi. Progresse.
+              <br />
+              La plateforme de formation pratique avec coach IA pour développer tes compétences en communication.
+            </p>
+            <div className="flex gap-4">
+              {[
+                { icon: Twitter, href: "#", label: "Twitter" },
+                { icon: Linkedin, href: "#", label: "LinkedIn" },
+                { icon: Instagram, href: "#", label: "Instagram" },
+                { icon: Mail, href: "mailto:contact@orion-academy.fr", label: "Email" },
+              ].map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-navy-border text-slate-400 transition-colors hover:border-gold/30 hover:text-gold"
+                >
+                  <Icon size={16} />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        {cols.map((c) => (
-          <div key={c.title}>
-            <h4 className="mb-3 text-xs font-semibold uppercase tracking-widest text-ink-secondary">
-              {c.title}
-            </h4>
-            <ul className="space-y-2">
-              {c.links.map((l) => (
-                <li key={l.href}>
+
+          {/* Plateforme links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-white">
+              Plateforme
+            </h3>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.plateforme.map((link) => (
+                <li key={link.href}>
                   <Link
-                    href={l.href}
-                    className="text-sm text-ink-secondary transition-colors hover:text-ink-primary"
+                    href={link.href}
+                    className="text-sm text-slate-400 transition-colors hover:text-gold"
                   >
-                    {l.label}
+                    {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        ))}
-      </div>
-      <div className="border-t border-white/[0.05]">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-5 text-xs text-ink-secondary">
-          <span>© {new Date().getFullYear()} Forecaxt SA. All rights reserved.</span>
-          <span className="font-mono">
-            Forecast Exchange · Event Contracts · Probability Markets
-          </span>
+
+          {/* Legal links */}
+          <div>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest text-white">
+              Légal
+            </h3>
+            <ul className="space-y-3">
+              {FOOTER_LINKS.legal.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-slate-400 transition-colors hover:text-gold"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-navy-border pt-8 md:flex-row">
+          <p className="text-xs text-slate-500">
+            © {new Date().getFullYear()} ORION ACADEMY. Tous droits réservés.
+          </p>
+          <p className="text-xs text-slate-500">
+            Apprends. Entraîne-toi. Progresse.
+          </p>
         </div>
       </div>
     </footer>

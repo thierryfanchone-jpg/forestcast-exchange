@@ -1,23 +1,28 @@
-# Les Ateliers de la Forme
+# ORION ACADEMY
 
-Site e-commerce premium pour **Les Ateliers de la Forme** — cuisine saine, gourmande et caribéenne, sans gluten et sans lactose.
+**Apprends. Entraîne-toi. Progresse.**
 
-Fondé par **Thierry Fanchone** en 2017.
+Plateforme de formation pratique avec coach IA pour développer ses compétences en communication, prise de parole, entretien d'embauche, pitch et leadership.
 
 ---
 
 ## Stack technique
 
-- **Next.js 15** (App Router)
-- **React 19**
-- **Tailwind CSS**
-- **Framer Motion** — animations fluides
-- **Lucide React** — icônes
-- **TypeScript** strict
+| Technologie | Usage |
+|---|---|
+| Next.js 15 (App Router) | Framework frontend |
+| TypeScript | Typage statique |
+| Tailwind CSS | Styles et design system |
+| Supabase | Auth + base de données PostgreSQL |
+| Stripe | Paiements et abonnements |
+| Claude API / OpenAI | Coach IA intelligent |
+| Vercel | Déploiement |
 
 ---
 
 ## Installation
+
+### 1. Cloner le dépôt
 
 ```bash
 git clone https://github.com/thierryfanchone-jpg/forestcast-exchange.git
@@ -25,15 +30,50 @@ cd forestcast-exchange
 npm install
 ```
 
----
+### 2. Configurer les variables d'environnement
 
-## Lancement local
+```bash
+cp .env.example .env.local
+```
+
+Remplis `.env.local` avec tes clés :
+
+```env
+# Supabase — https://app.supabase.com
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_ROLE_KEY=eyJ...
+
+# Stripe — https://dashboard.stripe.com
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_PRICE_STARTER=price_...
+STRIPE_PRICE_PRO=price_...
+STRIPE_PRICE_EXPERT=price_...
+STRIPE_PRICE_MONTHLY=price_...
+
+# Coach IA — Anthropic (prioritaire) ou OpenAI (fallback)
+ANTHROPIC_API_KEY=sk-ant-...
+OPENAI_API_KEY=sk-...
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### 3. Configurer Supabase
+
+1. Crée un projet sur [supabase.com](https://supabase.com)
+2. Dans l'éditeur SQL de Supabase, exécute le fichier `supabase/schema.sql`
+3. Active l'authentification Google dans Auth > Providers
+
+### 4. Lancer en développement
 
 ```bash
 npm run dev
 ```
 
-Site disponible sur [http://localhost:3000](http://localhost:3000).
+Ouvrir [http://localhost:3000](http://localhost:3000)
 
 ---
 
@@ -42,102 +82,118 @@ Site disponible sur [http://localhost:3000](http://localhost:3000).
 ```
 src/
 ├── app/
-│   ├── layout.tsx              # Layout global (fonts, CartProvider)
-│   ├── page.tsx                # Page d'accueil
-│   ├── commander/page.tsx      # Catalogue filtrable par catégorie
-│   ├── menus/page.tsx
-│   ├── salades/page.tsx
-│   ├── biscuits/page.tsx
-│   ├── gateaux/page.tsx
-│   ├── specialites/page.tsx
-│   ├── boissons/page.tsx
-│   ├── condiments/page.tsx
-│   ├── epicerie/page.tsx
-│   ├── traiteur/page.tsx
-│   ├── notre-histoire/page.tsx
-│   └── contact/page.tsx
-│
+│   ├── page.tsx                     # Page d'accueil (Hero, Modules, Coach IA, Tarifs, FAQ)
+│   ├── formations/                  # Catalogue des formations
+│   │   └── [slug]/page.tsx          # Page détail formation
+│   ├── tarifs/page.tsx              # Page tarifs
+│   ├── connexion/page.tsx           # Connexion (email + Google)
+│   ├── inscription/page.tsx         # Inscription
+│   ├── dashboard/                   # Espace membre (protégé)
+│   │   ├── layout.tsx               # Layout dashboard avec sidebar
+│   │   ├── page.tsx                 # Tableau de bord (scores, stats, badges)
+│   │   ├── formations/page.tsx      # Mes formations + progression
+│   │   │   └── [slug]/page.tsx      # Lecteur de cours avec leçons
+│   │   ├── coach/page.tsx           # Coach IA chat (6 scénarios)
+│   │   ├── simulation/page.tsx      # Simulation orale + analyse 7 critères
+│   │   ├── certification/page.tsx   # Certifications Bronze/Argent/Or
+│   │   └── passeport/page.tsx       # Passeport de compétences + badges
+│   ├── api/
+│   │   ├── create-checkout-session/ # POST — Stripe checkout
+│   │   ├── stripe-webhook/          # POST — Webhooks Stripe
+│   │   ├── ai-coach/                # POST — Coach IA (Claude/OpenAI)
+│   │   └── generate-certificate/    # GET  — Certificat HTML/PDF
+│   ├── mentions-legales/page.tsx
+│   ├── cgv/page.tsx
+│   ├── cgu/page.tsx
+│   ├── confidentialite/page.tsx
+│   └── layout.tsx
 ├── components/
-│   ├── Header.tsx              # Navigation fixe responsive
-│   ├── Hero.tsx                # Héro animé pleine page
-│   ├── AnimatedBanner.tsx      # Bandeau défilant en boucle
-│   ├── CategoryGrid.tsx        # Grille des 9 catégories
-│   ├── ProductCard.tsx         # Carte produit + panier
-│   ├── ProductGrid.tsx         # Grille de ProductCards
-│   ├── CategoryPageContent.tsx # Template pages catégorie
-│   ├── Cart.tsx                # Drawer panier latéral
-│   ├── CartItem.tsx            # Ligne article panier
-│   ├── WhatsAppOrder.tsx       # Formulaire + envoi WhatsApp
-│   ├── FounderSection.tsx      # Mot du fondateur
-│   ├── DifferenceSection.tsx   # Nos 4 piliers différenciants
-│   ├── TestimonialsSection.tsx # Avis clients
-│   ├── TraiteurSection.tsx     # Section traiteur & événements
-│   ├── ContactSection.tsx      # Coordonnées et contact
-│   └── SiteFooter.tsx          # Pied de page
-│
-└── lib/
-    ├── config.ts               # ⚙️  Numéro WhatsApp, email
-    ├── products.ts             # Catalogue (27 produits, 9 catégories)
-    ├── cart-store.tsx          # Context React + reducer panier
-    └── whatsapp.ts             # Génération message WhatsApp
+│   ├── layout/
+│   │   ├── Navbar.tsx               # Navigation responsive avec scroll-detection
+│   │   ├── Footer.tsx               # Footer avec liens et réseaux sociaux
+│   │   └── DashboardSidebar.tsx     # Sidebar dashboard (desktop + mobile)
+│   ├── home/
+│   │   └── FAQSection.tsx           # Accordion FAQ client component
+│   └── ui/
+│       ├── Button.tsx               # Bouton réutilisable (primary/secondary/outline)
+│       ├── Badge.tsx                # Badge coloré (gold/blue/green/purple)
+│       ├── Progress.tsx             # Barre de progression animée
+│       └── ScoreRing.tsx            # Anneau SVG score circulaire
+├── lib/
+│   ├── supabase.ts                  # Client Supabase (navigateur)
+│   ├── supabase-server.ts           # Client Supabase (serveur)
+│   ├── stripe.ts                    # Client Stripe + IDs produits
+│   ├── utils.ts                     # cn(), formatPrice(), formatDate()...
+│   └── demo-data.ts                 # Données de démo (cours, offres, témoignages)
+├── types/
+│   └── index.ts                     # Tous les types TypeScript
+└── middleware.ts                    # Garde routes /dashboard → /connexion
 ```
 
 ---
 
-## Modifier le numéro WhatsApp
+## Modules de formation
 
-Ouvrez **`src/lib/config.ts`** :
-
-```typescript
-export const WHATSAPP_NUMBER = "+33600000000"; // ← votre numéro ici
-```
-
-Format attendu : `+[code pays][numéro]`, ex. `+33612345678`.
-
----
-
-## Modifier les produits
-
-Ouvrez **`src/lib/products.ts`** et éditez le tableau `PRODUCTS` :
-
-```typescript
-{
-  id: "identifiant-unique",
-  name: "Nom du produit",
-  category: "salades",          // menus | salades | biscuits | gateaux |
-                                 // specialites | boissons | condiments |
-                                 // epicerie | traiteur
-  description: "Description courte.",
-  price: 9.50,                  // number | null  (null = "Sur devis")
-  image: "https://images.unsplash.com/photo-...",
-  glutenFree: true,
-  lactoseFree: true,
-  featured: true,               // optionnel — affiché en page d'accueil
-}
-```
+| Module | Catégorie | Niveau | Prix |
+|---|---|---|---|
+| **Orion Speak** | Prise de parole | Débutant | 79€ |
+| **Orion Job** | Entretien d'embauche | Intermédiaire | 79€ |
+| **Orion Pitch** | Pitch commercial | Intermédiaire | 79€ |
+| **Orion Leader** | Leadership | Avancé | 99€ |
+| **Orion Sales** | Vente & négociation | Avancé | 99€ |
 
 ---
 
-## Remplacer les images
+## Offres tarifaires
 
-Les images sont des URLs Unsplash en placeholder.
+| Offre | Prix | Contenu |
+|---|---|---|
+| Gratuit | 0€ | 3 simulations + 1 mini module |
+| Starter | 29€ | 1 module + 10 simulations + certificat |
+| Pro ⭐ | 79€ | 3 modules + 50 simulations + badges |
+| Expert | 199€ | Tous modules + IA illimité + certification complète |
+| Abonnement | 14,90€/mois | Nouveaux exercices + coach continu + défis |
 
-Pour utiliser vos propres photos :
-1. Placez vos fichiers dans `public/images/`
-2. Remplacez les URLs dans `products.ts` : `/images/nom-fichier.jpg`
+---
+
+## Certifications
+
+| Niveau | Score |
+|---|---|
+| 🥉 Bronze | 60 – 74% |
+| 🥈 Argent | 75 – 89% |
+| 🥇 Or | 90 – 100% |
+
+Chaque certificat : Nom · Score · Date · QR code vérifiable · Signature ORION ACADEMY
+
+---
+
+## Coach IA — Scénarios disponibles
+
+- 💼 Entretien d'embauche
+- 🙋 Présentation de soi
+- 🚀 Pitch commercial
+- 📊 Réunion professionnelle
+- 🎯 Gestion du trac
+- 🎤 Prise de parole publique
+
+Le coach analyse : Score /10 · Points forts · Points faibles · Correction · Exercice suivant
 
 ---
 
 ## Déploiement sur Vercel
 
-**Via l'interface :**
-1. Importez ce dépôt sur [vercel.com](https://vercel.com)
-2. Framework preset : **Next.js** (auto-détecté)
-3. Cliquez **Deploy**
-
-**Via la CLI :**
 ```bash
-npx vercel
+npm run build          # Vérification locale
+vercel --prod          # Déploiement
+```
+
+Configure les variables d'environnement dans le dashboard Vercel.
+
+### Stripe Webhook en local
+
+```bash
+stripe listen --forward-to localhost:3000/api/stripe-webhook
 ```
 
 ---
@@ -145,13 +201,23 @@ npx vercel
 ## Commandes utiles
 
 ```bash
-npm run dev          # Développement local
-npm run build        # Build production
-npm run typecheck    # Vérification TypeScript
-npm run lint         # ESLint
-npm run format       # Prettier
+npm run dev           # Développement local
+npm run build         # Build production
+npm run typecheck     # Vérification TypeScript
+npm run lint          # ESLint
 ```
 
 ---
 
-*Les Ateliers de la Forme — Cuisine caribéenne premium, sans gluten et sans lactose. Fondé en 2017 par Thierry Fanchone.*
+## Roadmap
+
+- [ ] Supabase Auth complète (email + Google OAuth)
+- [ ] Vidéos de cours (Mux ou Cloudinary)
+- [ ] Génération PDF certificats (@react-pdf/renderer)
+- [ ] Emails transactionnels (Resend)
+- [ ] Dashboard admin
+- [ ] PWA / Application mobile
+
+---
+
+*ORION ACADEMY © 2025 — Tous droits réservés*
