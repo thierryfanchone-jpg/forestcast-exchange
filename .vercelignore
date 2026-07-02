@@ -1,0 +1,7 @@
+# Le sous-projet previseisme-caraibe/ (Next.js + FastAPI) est un projet
+# indépendant, destiné à être déployé séparément (Root Directory dédié dans
+# Vercel, ou tout autre hébergeur). On l'exclut du déploiement des projets
+# Vercel existants pointant sur la racine du dépôt afin d'éviter toute
+# détection de "monorepo" ambiguë (double package.json/lockfile) qui casse
+# leur build.
+previseisme-caraibe
