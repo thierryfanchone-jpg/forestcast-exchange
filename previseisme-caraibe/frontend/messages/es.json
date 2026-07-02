@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "siteName": "PréviSéisme Caraïbe",
+    "tagline": "Monitoreo sísmico del Caribe en tiempo real."
+  },
+  "nav": {
+    "worldMap": "Mapa mundial",
+    "caribbeanMap": "Mapa del Caribe",
+    "search": "Búsqueda",
+    "history": "Historial",
+    "dashboard": "Panel de control",
+    "solutions": "Soluciones",
+    "businesses": "Empresas",
+    "communities": "Comunidades",
+    "api": "API",
+    "about": "Acerca de",
+    "help": "Centro de ayuda",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "signup": "Crear cuenta",
+    "profile": "Mi perfil",
+    "notifications": "Notificaciones",
+    "logout": "Cerrar sesión",
+    "menu": "Menú"
+  },
+  "footer": {
+    "description": "Plataforma profesional de monitoreo y previsión de la actividad sísmica en el arco del Caribe, al servicio de familias, empresas y colectividades.",
+    "product": "Producto",
+    "company": "Empresa",
+    "resources": "Recursos",
+    "legal": "Legal",
+    "legalNotice": "Aviso legal",
+    "privacy": "Privacidad",
+    "terms": "Términos de uso",
+    "sources": "Fuentes de datos",
+    "status": "Estado del servicio",
+    "rights": "Todos los derechos reservados.",
+    "madeFor": "Diseñado para la seguridad sísmica del Caribe."
+  },
+  "common": {
+    "learnMore": "Saber más",
+    "getStarted": "Empezar",
+    "viewAll": "Ver todo",
+    "readMore": "Leer más",
+    "loading": "Cargando…",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "filters": "Filtros",
+    "reset": "Restablecer",
+    "apply": "Aplicar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "seeDetails": "Ver detalle",
+    "demoDataNotice": "Datos de demostración — la conexión a los flujos en tiempo real está en despliegue.",
+    "magnitude": "Magnitud",
+    "depth": "Profundidad",
+    "location": "Ubicación",
+    "date": "Fecha",
+    "time": "Hora",
+    "source": "Fuente",
+    "confidence": "Confiabilidad",
+    "region": "Región",
+    "country": "País",
+    "city": "Ciudad",
+    "min": "Mín",
+    "max": "Máx",
+    "results": "resultados",
+    "noResults": "Sin resultados para estos criterios.",
+    "km": "km",
+    "comingSoon": "Próximamente",
+    "beta": "Beta"
+  },
+  "themeToggle": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema"
+  },
+  "home": {
+    "hero": {
+      "badge": "Monitoreo sísmico continuo — Arco del Caribe",
+      "title": "Anticípese al riesgo sísmico en el Caribe.",
+      "subtitle": "PréviSéisme Caraïbe agrega en tiempo real los datos de USGS, EMSC, IPGP y la red FDSN para ofrecer a familias, empresas y colectividades una visión clara y confiable de la actividad sísmica regional.",
+      "ctaPrimary": "Explorar el mapa en vivo",
+      "ctaSecondary": "Ver una demostración",
+      "stat1Value": "4",
+      "stat1Label": "flujos sísmicos agregados",
+      "stat2Value": "24/7",
+      "stat2Label": "monitoreo continuo",
+      "stat3Value": "< 60s",
+      "stat3Label": "retraso medio de publicación",
+      "stat4Value": "15+",
+      "stat4Label": "territorios cubiertos"
+    },
+    "logos": { "title": "Datos verificados con redes de referencia" },
+    "liveFeed": {
+      "title": "Actividad sísmica reciente",
+      "subtitle": "Últimos eventos detectados en la región del Caribe, actualizados continuamente.",
+      "cta": "Ver el mapa del Caribe"
+    },
+    "features": {
+      "title": "Una plataforma diseñada para la vigilancia",
+      "subtitle": "Desde el mapa interactivo hasta el panel empresarial, cada herramienta está pensada para convertir datos sísmicos en bruto en decisiones claras.",
+      "items": [
+        {
+          "title": "Cartografía en tiempo real",
+          "description": "Visualice cada evento sísmico en un mapa mundial o centrado en el Caribe, con profundidad, magnitud y nivel de confianza."
+        },
+        {
+          "title": "Búsqueda multicriterio",
+          "description": "Filtre por país, ciudad, magnitud o período para encontrar al instante la información que le interesa."
+        },
+        {
+          "title": "Alertas inteligentes",
+          "description": "Reciba notificaciones configurables según la magnitud, la distancia y el nivel de confianza del evento."
+        },
+        {
+          "title": "Historial completo",
+          "description": "Consulte décadas de datos sísmicos para analizar tendencias y evaluar el riesgo a largo plazo."
+        },
+        {
+          "title": "Paneles dedicados",
+          "description": "Espacios específicos para familias, empresas multisitio y colectividades territoriales."
+        },
+        {
+          "title": "API abierta",
+          "description": "Integre los datos sísmicos del Caribe directamente en sus propios sistemas a través de nuestra API REST."
+        }
+      ]
+    },
+    "modes": {
+      "title": "Una solución para cada uso",
+      "subtitle": "Tres modos de uso diseñados para necesidades diferentes.",
+      "family": {
+        "title": "Familia",
+        "description": "Siga la seguridad sísmica cerca de usted y sus seres queridos, dondequiera que vivan en el Caribe.",
+        "cta": "Descubrir"
+      },
+      "business": {
+        "title": "Empresa",
+        "description": "Proteja sus sitios, equipos y activos con reglas de alerta configurables por ubicación.",
+        "cta": "Ver la solución empresarial"
+      },
+      "community": {
+        "title": "Colectividad",
+        "description": "Gestione la resiliencia sísmica de su territorio con herramientas de seguimiento y comunicación dedicadas.",
+        "cta": "Ver la solución colectividad"
+      }
+    },
+    "map": {
+      "title": "Todo el arco del Caribe, bajo vigilancia",
+      "subtitle": "Desde Jamaica hasta Trinidad, pasando por Haití, República Dominicana, Guadalupe y Martinica.",
+      "cta": "Abrir el mapa interactivo"
+    },
+    "testimonial": {
+      "quote": "PréviSéisme Caraïbe nos permite centralizar el monitoreo sísmico de nuestros doce sitios regionales en un solo panel.",
+      "author": "Dirección de riesgos, grupo industrial regional"
+    },
+    "cta": {
+      "title": "¿Listo para monitorear el riesgo sísmico en tiempo real?",
+      "subtitle": "Cree su cuenta gratuita y configure sus primeras alertas en minutos.",
+      "primary": "Crear cuenta gratuita",
+      "secondary": "Contactar al equipo"
+    }
+  },
+  "map": {
+    "world": {
+      "title": "Mapa mundial de sismos",
+      "subtitle": "Vista general de la actividad sísmica mundial reciente, con foco en zonas de alta actividad."
+    },
+    "caribbean": {
+      "title": "Mapa del Caribe",
+      "subtitle": "Actividad sísmica detallada en todo el arco antillano y zonas limítrofes."
+    },
+    "legend": "Leyenda",
+    "legendMagnitude": "Magnitud",
+    "layers": "Capas",
+    "layerEpicenters": "Epicentros",
+    "layerFaults": "Fallas conocidas",
+    "layerRisk": "Zonas de riesgo",
+    "last24h": "Últimas 24 horas",
+    "last7d": "Últimos 7 días",
+    "last30d": "Últimos 30 días",
+    "allPeriod": "Todo el período",
+    "eventDetail": "Detalle del evento",
+    "felt": "Reportes de percepción",
+    "reportFelt": "Sentí este sismo"
+  },
+  "search": {
+    "title": "Búsqueda avanzada",
+    "subtitle": "Encuentre eventos sísmicos por país, ciudad o magnitud.",
+    "byCountry": "Por país",
+    "byCity": "Por ciudad",
+    "byMagnitude": "Por magnitud",
+    "countryPlaceholder": "Seleccionar un país",
+    "cityPlaceholder": "Buscar una ciudad…",
+    "magnitudeRange": "Rango de magnitud",
+    "dateRange": "Período",
+    "from": "Desde",
+    "to": "Hasta",
+    "sortBy": "Ordenar por",
+    "sortRecent": "Más reciente",
+    "sortMagnitude": "Magnitud descendente",
+    "sortDepth": "Profundidad",
+    "resultsFound": "eventos encontrados"
+  },
+  "history": {
+    "title": "Historial sísmico",
+    "subtitle": "Explore las tendencias de la actividad sísmica caribeña a lo largo del tiempo.",
+    "totalEvents": "Eventos registrados",
+    "avgMagnitude": "Magnitud promedio",
+    "strongestEvent": "Evento más fuerte",
+    "byYear": "Distribución por año",
+    "byCountry": "Distribución por país",
+    "byMagnitude": "Distribución por magnitud",
+    "table": "Lista de eventos"
+  },
+  "dashboard": {
+    "title": "Panel de control",
+    "welcome": "Bienvenido",
+    "overview": "Resumen",
+    "activeAlerts": "Alertas activas",
+    "monitoredSites": "Sitios monitoreados",
+    "recentEvents": "Eventos recientes",
+    "riskLevel": "Nivel de riesgo",
+    "sourcesStatus": "Estado de las fuentes de datos",
+    "sourceOperational": "Operativo",
+    "sourceDegraded": "Degradado",
+    "sourceDown": "Inactivo",
+    "weeklyActivity": "Actividad semanal",
+    "manageSites": "Gestionar mis sitios",
+    "manageAlerts": "Gestionar mis alertas",
+    "exportReport": "Exportar un informe"
+  },
+  "auth": {
+    "loginTitle": "Iniciar sesión",
+    "loginSubtitle": "Acceda a su panel de PréviSéisme Caraïbe.",
+    "signupTitle": "Crear una cuenta",
+    "signupSubtitle": "Únase a PréviSéisme Caraïbe en segundos.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "confirmPassword": "Confirmar contraseña",
+    "fullName": "Nombre completo",
+    "organization": "Organización (opcional)",
+    "rememberMe": "Recordarme",
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "loginCta": "Iniciar sesión",
+    "signupCta": "Crear mi cuenta",
+    "noAccount": "¿Aún no tiene cuenta?",
+    "hasAccount": "¿Ya tiene una cuenta?",
+    "orContinueWith": "O continuar con",
+    "demoNotice": "Modo demostración: no se envía ningún dato a un servidor de autenticación real."
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "personalInfo": "Información personal",
+    "preferences": "Preferencias",
+    "security": "Seguridad",
+    "language": "Idioma",
+    "homeLocation": "Ubicación de referencia",
+    "alertThreshold": "Umbral de alerta (magnitud)",
+    "notificationChannels": "Canales de notificación",
+    "channelEmail": "Correo electrónico",
+    "channelSms": "SMS",
+    "channelPush": "Notificación push",
+    "deleteAccount": "Eliminar mi cuenta",
+    "saveChanges": "Guardar cambios"
+  },
+  "notifications": {
+    "title": "Centro de notificaciones",
+    "subtitle": "Encuentre todas las alertas e información sobre su zona de monitoreo.",
+    "markAllRead": "Marcar todo como leído",
+    "empty": "Aún no hay notificaciones.",
+    "settings": "Configuración de notificaciones"
+  },
+  "businesses": {
+    "hero": {
+      "badge": "Solución empresarial",
+      "title": "Proteja sus sitios, equipos y continuidad operativa.",
+      "subtitle": "Monitoree la exposición sísmica de todas sus instalaciones en el Caribe desde un solo panel, con reglas de alerta configurables por sitio.",
+      "cta": "Solicitar una demostración"
+    },
+    "features": {
+      "title": "Diseñado para organizaciones multisitio",
+      "items": [
+        {
+          "title": "Gestión multisitio",
+          "description": "Mapee y monitoree todas sus instalaciones regionales."
+        },
+        {
+          "title": "Reglas de alerta por sitio",
+          "description": "Defina umbrales de magnitud y distancia específicos para cada edificio."
+        },
+        {
+          "title": "Gestión de roles",
+          "description": "Otorgue accesos diferenciados a sus equipos de seguridad, operaciones y dirección."
+        },
+        {
+          "title": "Informes exportables",
+          "description": "Genere informes PDF y Excel para sus auditorías y comités de riesgo."
+        }
+      ]
+    },
+    "plans": { "title": "Planes que se adaptan a su escala", "cta": "Contactar a ventas" }
+  },
+  "communities": {
+    "hero": {
+      "badge": "Solución colectividad",
+      "title": "Gestione la resiliencia sísmica de su territorio.",
+      "subtitle": "Una herramienta de vigilancia y comunicación para ayuntamientos, mancomunidades y servicios de gestión de crisis del Caribe.",
+      "cta": "Solicitar acceso piloto"
+    },
+    "features": {
+      "title": "Herramientas diseñadas para la gestión de crisis territorial",
+      "items": [
+        {
+          "title": "Mapeo de riesgo local",
+          "description": "Identifique las zonas y edificios más expuestos en su territorio."
+        },
+        {
+          "title": "Difusión de alertas ciudadanas",
+          "description": "Prepare mensajes de alerta multicanal para su población."
+        },
+        {
+          "title": "Coordinación interinstitucional",
+          "description": "Comparta una visión común entre servicios técnicos, seguridad civil y autoridades electas."
+        },
+        {
+          "title": "Informes institucionales",
+          "description": "Documente la actividad sísmica para sus planes de prevención de riesgos."
+        }
+      ]
+    }
+  },
+  "apiPage": {
+    "hero": {
+      "badge": "Desarrolladores",
+      "title": "La API sísmica del Caribe, lista para integrar.",
+      "subtitle": "Una API REST simple y bien documentada para integrar los datos sísmicos agregados por PréviSéisme Caraïbe en sus propias aplicaciones."
+    },
+    "quickstart": "Inicio rápido",
+    "endpoints": "Puntos de acceso principales",
+    "authTitle": "Autenticación",
+    "authDescription": "Todas las solicitudes autenticadas usan un token Bearer JWT obtenido a través de /v1/auth/token.",
+    "rateLimits": "Límites de solicitudes",
+    "rateLimitsDescription": "1000 solicitudes/hora en el plan gratuito, límites superiores disponibles en planes empresariales.",
+    "getKey": "Obtener una clave API",
+    "readDocs": "Consultar la documentación completa"
+  },
+  "contact": {
+    "title": "Contáctenos",
+    "subtitle": "¿Una pregunta, un proyecto o necesita asistencia? Nuestro equipo responde rápidamente.",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "organization": "Organización",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "submit": "Enviar mensaje",
+      "success": "Gracias, su mensaje ha sido enviado. Nuestro equipo le responderá en 24-48h."
+    },
+    "info": {
+      "title": "Otras formas de contactarnos",
+      "email": "contact@previseisme-caraibe.org",
+      "supportTitle": "Soporte técnico",
+      "salesTitle": "Contacto comercial",
+      "pressTitle": "Prensa y medios"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Nuestra misión: hacer útiles los datos sísmicos para todos.",
+      "subtitle": "PréviSéisme Caraïbe nació de la voluntad de hacer que la información sísmica sea confiable, accesible y procesable para los habitantes, empresas e instituciones del arco caribeño."
+    },
+    "mission": {
+      "title": "Por qué PréviSéisme Caraïbe",
+      "text": "El Caribe es una de las regiones sísmicamente más activas del mundo. Sin embargo, la información permanece dispersa entre múltiples agencias y formatos técnicos. Agregamos, verificamos y simplificamos estos datos para que todos puedan comprender y anticipar el riesgo sísmico."
+    },
+    "values": {
+      "title": "Nuestros valores",
+      "items": [
+        {
+          "title": "Confiabilidad",
+          "description": "Cada evento mostrado se verifica entre múltiples fuentes antes de su publicación."
+        },
+        {
+          "title": "Transparencia",
+          "description": "Siempre indicamos el origen y el nivel de confianza de cada dato."
+        },
+        {
+          "title": "Accesibilidad",
+          "description": "Una interfaz clara, multilingüe y diseñada para todos los públicos."
+        },
+        {
+          "title": "Soberanía regional",
+          "description": "Una plataforma diseñada para y con los territorios del Caribe."
+        }
+      ]
+    },
+    "team": {
+      "title": "Un equipo multidisciplinario",
+      "text": "Ingenieros sismólogos, especialistas en datos y expertos en gestión de crisis trabajan juntos para hacer de PréviSéisme Caraïbe una referencia regional."
+    },
+    "sources": {
+      "title": "Nuestras fuentes de datos",
+      "text": "Agregamos los flujos públicos de USGS, EMSC, IPGP y la red FDSN para garantizar la cobertura más completa y confiable posible."
+    }
+  },
+  "help": {
+    "title": "Centro de ayuda",
+    "subtitle": "Encuentre rápidamente respuestas a sus preguntas sobre PréviSéisme Caraïbe.",
+    "searchPlaceholder": "Buscar en la ayuda…",
+    "categories": {
+      "gettingStarted": "Primeros pasos",
+      "alerts": "Alertas y notificaciones",
+      "account": "Cuenta y perfil",
+      "business": "Soluciones empresariales",
+      "api": "API e integraciones",
+      "data": "Datos y fuentes"
+    },
+    "contactCta": "¿No encuentra una respuesta? Contacte a nuestro soporte."
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "subtitle": "Respuestas a las preguntas más frecuentes sobre PréviSéisme Caraïbe.",
+    "items": [
+      {
+        "question": "¿De dónde provienen los datos sísmicos mostrados?",
+        "answer": "Agregamos continuamente los flujos públicos de USGS (Estados Unidos), EMSC (Europa/Mediterráneo), IPGP (Institut de Physique du Globe de Paris, red Antillas) y la red internacional FDSN."
+      },
+      {
+        "question": "¿PréviSéisme Caraïbe puede predecir un sismo?",
+        "answer": "No. Ninguna tecnología actual puede predecir con certeza la fecha, el lugar y la magnitud de un futuro sismo. Nuestra plataforma se enfoca en la detección rápida, la agregación confiable y el análisis de riesgo a partir del historial sísmico."
+      },
+      {
+        "question": "¿El servicio es gratuito?",
+        "answer": "El acceso público (mapa, búsqueda, historial, alertas personales) es gratuito. Existen planes de pago para empresas y colectividades con necesidades avanzadas de supervisión multisitio."
+      },
+      {
+        "question": "¿Cómo se calculan los niveles de confianza?",
+        "answer": "Cada evento se compara entre las diferentes fuentes disponibles. Cuanto más se confirma un evento por varias redes independientes con parámetros coherentes, mayor es su nivel de confianza."
+      },
+      {
+        "question": "¿Puedo usar los datos a través de una API?",
+        "answer": "Sí, hay disponible una API REST pública. Consulte la página de API para la documentación completa y para obtener una clave de acceso."
+      },
+      {
+        "question": "¿En qué idiomas está disponible la plataforma?",
+        "answer": "PréviSéisme Caraïbe está disponible en francés, inglés y español, con el francés como idioma predeterminado."
+      },
+      {
+        "question": "¿Cómo reporto que sentí un sismo?",
+        "answer": "En la ficha detallada de cada evento, un botón «Sentí este sismo» le permite contribuir a la estimación de la intensidad percibida en el terreno."
+      },
+      {
+        "question": "¿Mis datos personales están protegidos?",
+        "answer": "Sí. Aplicamos principios estrictos de protección de datos y nunca compartimos su información personal con terceros sin consentimiento explícito."
+      }
+    ]
+  }
+}
