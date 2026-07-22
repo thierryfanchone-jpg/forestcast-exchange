@@ -1,20 +1,17 @@
 import { PrismaClient } from "@prisma/client";
 
-declare global {
-  // eslint-disable-next-line no-var
-  var __prisma: PrismaClient | undefined;
-}
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined;
+};
 
-/**
- * Shared Prisma client. Reused across hot reloads in development to avoid
- * exhausting the database connection pool.
- */
-export const db: PrismaClient =
-  globalThis.__prisma ??
+export const prisma =
+  globalForPrisma.prisma ??
   new PrismaClient({
-    log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
+    log: ["error"],
   });
 
-if (process.env.NODE_ENV !== "production") {
-  globalThis.__prisma = db;
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+
+export function isDbAvailable(): boolean {
+  return !!process.env.DATABASE_URL;
 }
