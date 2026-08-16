@@ -1,4 +1,4 @@
-import { WHATSAPP_NUMBER } from "./config";
+import { +596696082573 } from "./config";
 import type { CartItem } from "./cart-store";
 
 export type OrderData = {
